@@ -1,16 +1,19 @@
-# Community stuff.
+# Community Stuff
 
 ## License.
 
-PgManage is distributed under MIT License.
+PgManage is distributed under the MIT License.
 
-## Technologies used + credits to authors.
+## Technologies Used + Credits to Authors.
 
-## Reporting bugs
+- [OmniDB](https://github.com/OmniDB/OmniDB)
+- [Dalibo service](https://github.com/dalibo/pev2)
 
-https://github.com/commandprompt/pgmanage/issues
+## Reporting Bugs
 
-## Getting help
+Please create an issue at PgManage's [official repository](https://github.com/commandprompt/pgmanage/issues).
+
+## Getting Help
 
 Community groups maybe(Slack/Discord channels, smth else?)
-Contributing (what do we need from the community, pull requetsts etc)
+Contributing (what do we need from the community, pull requests, etc...)
