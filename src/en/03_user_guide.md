@@ -6,7 +6,7 @@
 
 ## DB Entity Tree and Context Menus
 
-The DB entity tree displays all of the database objects inside a server and is located at the right once a database connection is created.
+The DB entity tree displays all of the database objects inside a server and is located to the right of primary menu once a database session is established.
 
 ![Tree context menu](./images/tree_context_menus.png)
 
@@ -16,19 +16,23 @@ The **context menus** can be accessed by right clicking on one of the tree nodes
 
 ---
 
-## Tabs for Different Operations (Query, Monitoring, Console, and Backends)
+## Tabs for Different Operations
 
 At the right of the DB entity tree, the operation tabs are used to edit and execute the actions selected on the entity tree. A new tab can be opened by clicking on the plus sign on the tabs panel. There are four kinds of tabs:
 
-**Query tab:** SQL queries can be written and executed to the database. Below the tab, there are four buttons: run, indent SQL, command history, explain, and the explain analyze. The run button executes the query and displays the selected rows at the button right of the application. The indentation feature rewrites the query with standard indentation. The command history opens a menu where one can see executed queries at different time frames. The explain and analyze buttons provide information about the execution and planning time of the query, as well as information about the cost and filtering of rows. The information in the explain features will be displayed in a graph or in tabular form.
+### Query  
+SQL queries can be written and executed to the database. Below the query editor, there are four buttons: `Run`, `Indent SQL`, `Command History`, `Explain`, and the `Explain Analyze`. The Run button executes the query and displays the query results below the query editor. The Indent SQL feature rewrites the query with standard indentation. The command history opens a menu where one can view and search executed queries. The Explain/Explain Analyze buttons provide information about the execution and planning time of the query, as well as information about the cost and filtering of rows. The information in the explain features will be displayed in a graph or in tabular form.  
+**Note:** the Explain functionality is available for Postgres only.
 
 ![Query tab with the explain tree under it](./images/query_tab.png)
 
-**Console tab:** Though the application allows to alter the database objects through the entity tree, a console may also be used to write commands directly.
+### Console  
+Though the application allows to work with the database objects through the entity tree, a console may also be used to write commands directly.
 
 ![Console tab with a text editor under it](./images/console.png)
 
-**Monitoring dashboard:** The monitoring tabs display graphs with the following information:
+### Monitoring dashboard  
+The monitoring tabs display various database performance mentrics graphs:
 
 - Transaction Rate
 - Backends
@@ -53,11 +57,14 @@ At the right of the DB entity tree, the operation tabs are used to edit and exec
 - Backends
 - Activity
 
-The number of graphs displayed can be controlled by clicking on `Manage units` and selecting the desired graphs. Personalized monitor units may be created by `Manage units → new unit`. This will open a new tab where the name, type, refresh interval, and template can be specified. Once a template has been selected, you may edit the script on the text editor beneath it.
+The number of graphs displayed can be controlled by clicking on `Manage units` and selecting the desired graphs. Alternatively, one can remove graph widgets from the dashboard by clicking the `❌` icon on the top-right of the widget. Personalized monitor units may be created by `Manage units → new unit`. This will open a new tab where the name, type, refresh interval, and template can be specified. Once a template has been selected, you may edit the script on the text editor beneath it.
 
 ![Display of the monitor unit creation form](./images/monitor_unit.png)
+**Note:** the monitoring is available for Postgres, MariaDB and MySQL only.  
 
-**Backends:** The backends tab displays a table with information about ports, addresses, events, and database activity.
+### Backends
+The backends tab displays Postgres database sessions information such as back-end process id, start time, query and transaction start time, connected user etc. One can terminate a running back-end process by clicking the `❌` icon.  
+**Note:** the Backends tab is available for Postgres only.
 
 ---
 
@@ -67,7 +74,7 @@ The snippets panel can be accessed by clicking on the snippet symbol on the righ
 
 ![Image displaying the snippets panel](./images/snippet.png)
 
-To use a saved snippet, open a query tap and right click on the text editor. Here you may use, overwrite, or create a snippet.
+To use a saved snippet, open a query tab and right click on the query editor. Here you may use, overwrite, or create a snippet.
 
 ![Image showing how to use snippets on the query tab](./images/snippet1.png)
 
@@ -93,19 +100,25 @@ You may access the graph metrics by clicking on `Settings` at the top right. Thi
 
 ## Code Autocompletion
 
-To aid at typing speed, the application will suggest tables or indexes to autocomplete the query.
+To aid at typing speed, the application will suggest the names of available database object and SQL keywords while you type. Once the autocomplete menu is shown the suggested option can be selected by the up/down arrow keys and then inserted by pressing `Tab`
 
 ![Image showing the code autocompletion](./images/autocomplete.png)
 
 ---
 
 ## PostgreSQL Configuration Management
+FIXME: replace screens with light-themed equivalents  
 
+PgManage provides the convenient user interface to Postgres' ALTER SYSTEM set of commands via the **Server Configuration* context menu item.  
 To access the server configuration for a PostgreSQL connection, right click on the server object on the DB entity tree and select `Server Configuration`.
 
 ![Image with pointer clicking the Server Configuration button](./images/configuration.png)
 
-A new tab will open with the server configuration settings. You may search for a particular setting, choose a category, or revert a configuration with the `Config History` drop down menu. After making the desired changes to the configuration click `Apply` to save the configuration. A message will appear confirming the changes made and asking for an optional comment. Once committed, the new configuration should appear in the `Config History` drop down menu.
+A new tab will open with the server configuration settings. You may search for a particular setting, filter available settings by category, apply config changes or revert to a previously saved configuration snapshot via the `Config History` drop down menu.  
+After making the desired changes to the configuration click `Apply` to save the configuration.
+A confirmation prompt with the list of config changes to be made will be shown, her you can provide a name for the current configuration snapshot. Once committed, the server configuration changes will be applied and the snapshot of previous configuration should appear in the `Config History` drop down menu.  
+One may decide to revert some of previous configuration snapshots. To do so please select the snapshot from the dropdown menu click revert button and confirm the operation.  
+**Note:** changes to some server configuration options may require Postgres server restart, in such cases a the list of restart-pending options will be shown.
 
 ![Screenshot of the Server Configuration interface](./images/configuration1.png)
 
