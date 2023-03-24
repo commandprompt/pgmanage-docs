@@ -1,13 +1,13 @@
 # Community Stuff
 
-## License.
+## License
 
 PgManage is distributed under the MIT License.
 
 ## Technologies Used + Credits to Authors.
 
 - [OmniDB](https://github.com/OmniDB/OmniDB)
-- [Dalibo service](https://github.com/dalibo/pev2)
+- [Dalibo Postgres Explain Visualizer 2](https://github.com/dalibo/pev2)
 
 ## Reporting Bugs
 
