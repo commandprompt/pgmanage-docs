@@ -28,7 +28,6 @@ Download the `DMG` file and double click on it and drag the PgManage icon to the
 ### Oracle Support
 
 A note about extra dependencies for Oracle support.
-Application File locations (pgmanage.db pgmanage.log on different platforms)
 
 ## Launching the App
 
@@ -68,7 +67,7 @@ Connections and Connection Groups are shown on the left. Clicking on the left pa
 There are two special connection types, which behave differently:
 
 - **SQLite connections** do not need any other settings besides the sqlite3 file path.
-- **Terminal connections** are not database connections, since they require setting SSH tunnel properties.
+- **Terminal connections** are shell/console sessions with a remote host. These require setting SSH properties.
 
 > **Note:** the password field is optional. If you leave it empty, the password prompt will be shown each time before establishing the connection. For PostgreSQL connections, PgManage will also try to retrieve the connection password from the `.pgpass` file.
 
