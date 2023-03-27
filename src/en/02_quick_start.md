@@ -1,6 +1,6 @@
 # Quick Start
 
-## Install Quide
+## Install Guide
 
 Download the PgManage distribution file for your platform from the [Command Prompt website](https://www.commandprompt.com/products/pgmanage/).
 
