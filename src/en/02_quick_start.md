@@ -1,5 +1,7 @@
 # Quick Start
 
+---
+
 ## Install Guide
 
 Download the PgManage distribution file for your platform from the [Command Prompt website](https://www.commandprompt.com/products/pgmanage/).
@@ -15,9 +17,8 @@ chmod +x ./pgmanage-$version.AppImage
 
 ### Windows
 
-Run the PgManage setup executable and follow the installation instructions.
-
-**FIXME:** add PostgreSQL command line tools installation instructions
+- Run the PgManage setup executable and follow the installation instructions.
+- To install PostgreSQL client utilities, follow the steps in the [Installing Client Utilities on Windows](#installing-client-utilities-on-windows) section.
 
 ### Mac
 
@@ -25,9 +26,51 @@ Download the `DMG` file and double click on it and drag the PgManage icon to the
 
 **FIXME:** add PostgreSQL command line tools installation instructions
 
+---
+
+### PostgreSQL Client
+
+When PgManage starts it will try to automatically find PostgreSQL's client binaries, which contain executable files for the `pg_dump`, `pg_restore`, `pg_dumpall`, and `psql` commands. For cases in which this autodiscovery does not work or is not desired, a path to the binaries may be specified on the application’s `Utilities Menu → Settings`.
+
+![Image of the settings dialog](./images/pgmanage-settings.png)
+
+To check that the binaries were found, you may click the `verify` button which will display the installed PostgreSQL’s version.
+
+![Image of the confirmation message](./images/pgmanage-validate.png)
+
+> **Note:** The autodiscovery of client binaries is not available on Windows. The only way to use the backup and restore features is to manually install the PostgreSQL client utilities.
+
+#### Installing Client Utilities on Windows
+
+- You may download a Windows’ PostgreSQL installer from  [enterprisedb.com](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
+- Take note of the installation path where the components will be installed.
+
+![Image of the PostgreSQL installer asking for an installation path](./images/edb_windows_psql_installer1.png)
+
+- The installer will ask what components to install. Only install the `command line tools`.
+
+![Image of the PostgreSQL installer asking what components to install](./images/edb_windows_psql_installer2.png)
+
+- Finally, add the path to the binaries in the PgManage’s `Utilities Menu → Settings`. Notice that the binary files are inside the `bin` folder.
+
+![Image of the settings dialog](./images/pgmanage_windows_binaries_validation.png)
+
+#### Installing Client Utilities on Linux:
+
+- Follow the instructions to install PostgreSQL for your particular linux distribution on [postgresql.org](https://www.postgresql.org/download/linux/).
+- Add the path of the binaries in `Utilities Menu → Settings`. For example:
+
+```
+usr/bin
+```
+
+---
+
 ### Oracle Support
 
 A note about extra dependencies for Oracle support.
+
+---
 
 ## Launching the App
 
@@ -50,9 +93,13 @@ The utilities menu is located at the top right corner. From there, you may acces
 
 On the primary menu, one can manage connections, switch between active database sessions, and access the snippets, which will be discussed later in this documentation.
 
+---
+
 ## Protected Credentials Storage
 
 PgManage stores sensitive data, such as database access credentials and SSH keys, encrypted with a Master Password. Resetting the master password will erase all the protected application data.
+
+---
 
 ## Creating your first DB connection
 
@@ -82,6 +129,8 @@ The connection properties can be validated before saving the connection. To do s
 ### Connection Groups
 
 Related connections can be grouped by clicking the `➕ Add` button and selecting the `Group` option. On the `Group` form, enter a name for the new connection group and select the connections to be grouped; click `Save`. You may also group/ungroup a particular connection from the connection edit screen by selecting the corresponding option in the `Group` dropdown.
+
+---
 
 ## Connecting to the Database
 
