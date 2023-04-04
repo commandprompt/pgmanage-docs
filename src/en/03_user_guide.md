@@ -187,3 +187,37 @@ Once the desired information has been filled out, the query may be executed with
 ![Image showing the generated template with example data](./images/template2.png)
 
 > **Note:** In future releases, this feature is planned to be re-implemented in an user interface.
+
+---
+
+## Backup and Restore
+
+The **Backup** and **Restore** features provide a user interface for PostgreSQL’s [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html), [pg_dumpall](https://www.postgresql.org/docs/current/app-pg-dumpall.html), and [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) commands. PgManage allows you to create backups for a database or the whole server. The backups can be a `.tar` or a `directory`. 
+
+The different actions will be displayed under the `Jobs` section. Here, information such as PID, Type, Server, Object, Start Time, Status, Duration, and Actions will be displayed.
+
+Under the `Actions` column, you may view details about a specific job or delete the job. The information about the job will contain the executed command, the start time, the duration of execution, and the output.
+
+> **Note:** The backup and restore features run in the background, allowing you to navigate outside of the current tab without pausing the process.
+
+### Backup
+
+To create a backup, right-click on the server object or a database object on the DB entity tree. Then, select `Backup Server` or  `Backup` respectively. This will open the following tab:
+
+![Image of the backup dialog and the Job section](./images/bk-jobs.png)
+
+Once the general information is filled out the `Revert settings`, `Preview`, and `Backup` buttons will be made available.
+- **Revert settings:** resets the backup dialog settings to their default.
+- **Preview:** displays a modal with the command to be executed.
+- **Backup:** executes the backup commands as indicated in the form.
+
+### Restore
+
+To restore the server or a database, right-click on the appropriate object on the DB entity tree and select `Restore Server` or `Restore` respectively. A new tab will open with the restore dialog.
+
+![Image of the restore dialog and the Job section](./images/restore.png)
+
+Once the general information is filled out the `Revert Settings`, `Preview`, and `Backup` buttons will be made available. 
+- **Revert settings:** resets the restore dialog settings to their default.
+- **Preview:** displays a modal with the command to be executed.
+- **Restore:** executes the restore commands as indicated in the form.
