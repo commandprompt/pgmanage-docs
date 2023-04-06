@@ -30,11 +30,11 @@ Download the `DMG` file and double click on it and drag the PgManage icon to the
 
 ### PostgreSQL Client
 
-When PgManage starts it will try to automatically find PostgreSQL's client binaries, which contain executable files for the `pg_dump`, `pg_restore`, `pg_dumpall`, and `psql` commands. For cases in which this autodiscovery does not work or is not desired, a path to the binaries may be specified on the application’s `Utilities Menu → Settings`.
+When PgManage starts, it will try to automatically find PostgreSQL's client executable files for the `pg_dump`, `pg_restore`, `pg_dumpall`, and `psql` commands. For cases in which this autodiscovery does not work or is not desired, a path to the binaries may be specified on the application’s `Utilities Menu → Settings`.
 
 ![Image of the settings dialog](./images/pgmanage-settings.png)
 
-To check that the binaries were found, you may click the `verify` button which will display the installed PostgreSQL’s version.
+To check that the binaries were found, you may click the `validate` button which will display the installed PostgreSQL’s version.
 
 ![Image of the confirmation message](./images/pgmanage-validate.png)
 
@@ -57,12 +57,15 @@ To check that the binaries were found, you may click the `verify` button which w
 
 #### Installing Client Utilities on Linux:
 
-- Follow the instructions to install PostgreSQL for your particular linux distribution on [postgresql.org](https://www.postgresql.org/download/linux/).
-- Add the path of the binaries in `Utilities Menu → Settings`. For example:
+Setting up paths to PostgreSQL client binaries is not necessary for Linux systems because these will be automatically discovered in the $PATH environment variable. Still, there are some cases in which the path autodiscovery may fail:
 
-```
-usr/bin
-```
+- if multiple versions of the PostgreSQL client binaries are installed
+
+- if the PostgreSQL client binaries are installed in a location not included in the $PATH environment variable
+
+Once you have installed your preferred PostgreSQL’s version, add the path of the binaries in `Utilities Menu → Settings`.
+
+> **Note:** You may install PostgreSQL for your particular Linux distribution on [postgresql.org](https://www.postgresql.org/download/linux/).
 
 ---
 
