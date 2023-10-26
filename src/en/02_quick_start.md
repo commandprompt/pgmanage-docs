@@ -19,22 +19,20 @@ chmod +x ./pgmanage-$version.AppImage
 ### Windows
 
 Run the PgManage setup executable and follow the installation instructions.
-FIXME: add postgresql command line tools installation instructions
 
 ### Mac
 
 Download the `DMG` file and double click on it and drag the PgManage icon to the `Applications Folder` icon.
-FIXME: add postgresql command line tools installation instructions
 
 ### Oracle Support
 
 A note about extra dependencies for Oracle support.
 
 ### Postgresql Client
-While being self-contained application for the majority of features, pgmanage relies on postgresql command line tools to perform database backup and restore operations
-TODO: add winstallation guide for various linux distros, windows and osx
+While being self-contained application for the majority of features, pgmanage relies on postgresql command line tools to perform database backup and restore operations.
 
-TODO:A note about extra dependencies for Oracle support.
+TODO: add installation guide for various linux distros, windows and osx\
+TODO: add note about extra dependencies for Oracle support.
 
 
 ## Launching the App
@@ -81,7 +79,7 @@ There are two special connection types, which behave differently:
 - **SQLite connections** do not need any other settings besides the sqlite3 file path.
 - **Terminal connections** are shell/console sessions with a remote host. These require setting SSH properties.
 
-> **Note:** the password field is optional. If you leave it empty, the password prompt will be shown each time before establishing the connection. For PostgreSQL connections, PgManage will also try to retrieve the connection password from the `.pgpass` file.
+> **Note:** the password field is optional. If you leave it empty, the password prompt will be shown each time before establishing the connection. For PostgreSQL connections, PgManage will also try to retrieve the connection password from the `.pgpass` file, unless the connection properties are provided in connection string form.
 
 ### SSH Tunnelling
 
