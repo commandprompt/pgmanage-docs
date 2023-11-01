@@ -16,17 +16,38 @@ The **context menus** can be accessed by right-clicking on one of the tree nodes
 
 The actions available depend on the selected database object. Here is a list of command actions on alphabetical order:
 
-- **Alter/edit:** opens a query tab with a template to change the given object.
-**TODO**: replace the above with a description of the new Table Editor functionality, same applies to "Create Table". The editor is available via Tables node->right click->Create Table OR by right clicking on the table node->table actions->alter table
+- **Alter/edit:** opens a new tab with an interface to alter the given object. For example, a table may be altered by right-clicking on the table object and selecting `Table Actions → Alter Table`. From there, you may do the following:
+    - Change a field by double-clicking
+    - Add a column with the `Add Column` button
+    - Remove a column with the `❌ icon` at the end of each row
+    - Check the generated query under the `Generated SQL`
+    - Execute the generated query with the `Apply Changes` button.
+
+![Alter table interface](./images/alter_table.png)
 
 - **Analyze Table:** opens a query tab with a template for the [ANALYZE](https://www.postgresql.org/docs/current/sql-analyze.html) action.
-- **Create:** opens a query tab with a template to create the given object.
+- **Create:** opens a new tab with an interface to create the given object. For example, a table may be created by right-clicking on the `Tables` object and selecting `Create Table`. From here you may do the following:
+    - change the table name
+    - change the assigned schema
+    - edit the columns by double-clicking on the fields
+    - add a column with the `Add Column` button
+    - remove a column with the `❌ icon` at the end of each line.
+    - move a given column up or down with the arrows at the end of each line
+    - check the generated query under the `Generated SQL` field.
+    - execute the generated query with the `Apply Changes` button.
+
+![Create table interface](./images/create_table.png)
+
 - **Drop/Delete:** deletes the selected object from the server.
 - **Monitoring:** the dashboard or the backends may be selected to be opened on a new tab.
 - **Refresh:** refreshes the selected object.
 - **Reindex:** opens a query tab with a template for the [REINDEX](https://www.postgresql.org/docs/current/sql-reindex.html) action.
-- **Render Graph:** creates the graph of tables inside the database. It can generate a simple graph or a complete graph.
-**TODO**: ^^^ this feature was replaced with ER Diagram menu item.
+- **Render Graph:** opens a tab with an Entity Relationship diagram. This feature is available by right-clicking one of the schema objects and selecting `ER Diagram`. From there, you may:
+    - move the tables by clicking and dragging
+    - click on the name of a foreign key to highlight the table's relation with another.
+
+![Entity Relationship diagram with a hilighted foreighn key](./images/erd.png)
+
 - **Server Configuration:** opens the Server Configuration settings tab.
 - **Truncate Table:** opens a query tab with a template for the [TRUNCATE](https://www.postgresql.org/docs/current/sql-truncate.html) action.
 - **Update Records:** opens a query tab with a template for the [UPDATE](https://www.postgresql.org/docs/current/sql-update.html) action.
@@ -148,28 +169,50 @@ One may return to a previous configuration snapshot by selecting the snapshot fr
 
 ## PostgreSQL Extension Management
 
-PostgreSQL Extensions can be managed via dedicated dialog accessible by right clicking Extensions node and its subnodes in the DB Object Tree
-**TODO**: Add detailed documentation and screenshot
+PostgreSQL Extensions can be managed via the dedicated dialog accessible by right-clicking the `Extensions` node and its subnodes in the DB Object Tree.
+
+When the `Extensions` node is right-clicked, the following menu will be displayed:
+
+![Extensions node with menu](./images/extensions0.png)
+
+By clicking `Create Extension UI` a menu will open with a user interface, allowing to enter the extension name, a comment, a schema, and a version. A preview of the created query will be displayed under "Preview":
+
+![Create Extension menu](./images/create_extension.png)
+
+Right-clicking on a given extension will display a menu with the following options:
+
+- **Alter Extension UI:** The `Alter Extension UI` option will open a user interface to create an `ALTER EXTENSION` query. This displays the following fields: the name of the extension, a comment, the schema, the version, and the query's preview.
+
+![Alter Extension menu](./images/alter_extension.png)
+
+- **Alter Extension:** Displays a template on a new tap with an `ALTER EXTENSION` query.
+
+- **Edit Comment:** Displays a template on a new tap with a `COMMENT ON EXTENSION` query.
+
+- **Drop Extension UI:** The `Drop Extension UI` will open a prompt confirming if the given extension should be dropped. Cascading can be enabled if desired.
+
+![Drop Extension menu](./images/drop_extension.png)
+
+- **Drop Extension:** Displays a template on a new tap with a `DROP EXTENSION` query.
 
 ---
 
 ## Data Editor Grid
-**TODO**: document the new Data Editor tab here, remove old data editor instructions below.
 
 The data editor grid allows editing data of a specified query in a visual format. This feature can be accessed by right-clicking on a table in the DB entity tree.
 
 ![Image illustrating how to access the data editor grid](./images/edit_data_light.png)
 
-Then, a new tab will be created with a default query of `select * from mytable t`. A text editor allows to add further conditions to the query.
+Then, a new tab will be created with the data editor. By default, the first 10 rows of the `SELECT * from [table] ORDER BY t.id` query will be displayed. A text field allows to change the query's conditions.
 
-![Image showing the data grid tab](./images/edit_data_light1.png)
+![Image showing the data grid tab](./images/data_editor0.png)
 
 The data editor grid allows the following changes:
-- **Delete a row:** Click on the `❌ icon` and the selected rows will become red.
-- **Edit cells:** Double click on a data cell to edit the grid. Or, `right-click → Edit Content` to open a separate editor.
-- **Displayed rows:** Click on the `Query Rows` dropdown-menu and select the number of desired rows.
+- **Delete a row:** Click on the `❌ icon` next to a row and it will become red. You may deselect the row with the going back icon next to the row.
+- **Edit cells:** Double-click on a data cell to edit the grid.
+- **Displayed rows:** Click on the `Limit` dropdown menu and select the number of desired rows.
 
-Once the desired changes are done, click on the `Save` button.
+Once the desired changes are done, click on the `Apply changes` button.
 
 ---
 
@@ -209,7 +252,18 @@ The different backup/restore jobs will be displayed under the `Jobs` section. He
 Under the `Actions` column, you may view details about a specific job or delete the job. The information about the job will contain the executed command, the start time, the duration of execution, and the output.
 
 > **Note:** The backup and restore features run in the background, allowing you to navigate outside of the current tab without pausing the process.
-**TODO**: add note about the new PIGZ compression support and how to configure it (in app settings dialog)
+
+### PIGZ Support 
+PIGZ compression is now available for Linux. If desired, PIGZ needs to be installed on the target OS. For example, in Ubuntu, you may install it as follows:
+
+```
+sudo apt update -y
+sudo apt install -y pigz
+```
+Next, the path to the PIGZ binaries needs to be specified in PgManage. If PIGZ is installed, the path may be added in the `Utilities Menu → Settings → Options → Pigz Binary Path`.
+
+![Settings menu with the PIGZ's path field](./images/settings_options.png)
+
 ### Backup
 
 PgManage allows you to create backups for a database or the whole server. The database backups can be `custom`, `.tar`, `plain`, or `directory`. The  only format supported for server backups is `plain`.
@@ -235,6 +289,47 @@ Once the general information is filled out the `Revert Settings`, `Preview`, and
 - **Restore:** executes the restore commands as indicated in the form.
 
 ---
-### Extras
+## pg_cron GUI Instructions
+
+First, install pg_cron in your target OS. For example, in Ubuntu, you may install it as follows:
+
+```
+sudo apt-get -y install postgresql-[postgres version]-cron
+```
+
+Next, add pg_cron to `shared_preload_libraries` in postgresql.conf. To do this change the following parameter:
+
+```
+shared_preload_libraries = 'pg_cron'
+```
+
+> **Note:** to get the path to your postgresql.conf file you may run the following query: `SHOW config_file;` To get the path to your pg_hba.conf file run the following query: `SHOW hba_file;`
+
+Restart the postgres service so that the changes in the configuration take effect:
+
+```
+sudo systemctl restart postgresql-[version].service
+```
+
+Then, the pg_cron functions and metadata tables can be created. In the postgres shell run the following as super user:
+
+```
+CREATE EXTENSION pg_cron;
+```
+
+To ensure that pg_cron can start jobs, libpg needs permission to open a connection to the local database. This can be done by enabling `trust` authentication for connections coming from localhost. In your `pg_hba.conf` file, add the following line under "IPv4 local connections":
+```
+host    all           all           0.0.0.0/0          md5
+```
+
+Add the following line at the end of the `pg_hba.conf` file to allow connections from all hosts:
+```
+hostssl	 all         all          0.0.0.0/0    		md5
+```
+
+> **Note:** for more information on installing and setting up a cron extention, visit [pg_cron's GitHub repository](https://github.com/citusdata/pg_cron)
+
+Now, PgManage should display the `jobs` node under the database node.
+
 **TODO:** add detailed pg_cron GUI instructions
 brief:install pg_cron extension via extension manager. the "jobs" node should appear under the database node. right click-> new job
