@@ -8,8 +8,7 @@ Download the PgManage distribution file for your platform from the [Command Prom
 
 ### Linux
 
-PgManage for Linux is packaged in `.AppImage` format and does not require installation.
-Download PgManage .AppImage file, in the command line change to the directory containing the downloaded file, make it executable, and run it:
+PgManage for Linux is packaged in `.AppImage` format and does not require installation. Download PgManage's `.AppImage` file. Then, in the command line, change to the directory containing the downloaded file, make it executable, and run it:
 
 ```
 chmod +x ./pgmanage-$version.AppImage
@@ -18,28 +17,91 @@ chmod +x ./pgmanage-$version.AppImage
 
 ### Windows
 
-Run the PgManage setup executable and follow the installation instructions.
+- Run the PgManage setup executable and follow the installation instructions.
+- To install PostgreSQL client utilities, follow the steps in the [Installing Client Utilities on Windows](#installing-client-utilities-on-windows) section.
 
 ### Mac
 
 Download the `DMG` file and double click on it and drag the PgManage icon to the `Applications Folder` icon.
 
+**FIXME:** add PostgreSQL command line tools installation instructions
+
+---
+
+### PostgreSQL Client
+
+When PgManage starts, it will try to automatically find PostgreSQL's client executable files for the `pg_dump`, `pg_restore`, `pg_dumpall`, and `psql` commands. For cases in which this autodiscovery does not work or is not desired, a path to the binaries may be specified on the application’s `Utilities Menu → Settings`.
+
+![Image of the settings dialog](./images/pgmanage-settings.png)
+
+To check that the binaries were found, you may click the `validate` button which will display the installed PostgreSQL’s version.
+
+![Image of the confirmation message](./images/pgmanage-validate.png)
+
+> **Note:** The autodiscovery of client binaries is not available on Windows. The only way to use the backup and restore features is to manually install the PostgreSQL client utilities.
+
+#### Installing Client Utilities on Windows
+
+- You may download a Windows’ PostgreSQL installer from  [enterprisedb.com](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
+- Take note of the installation path where the components will be installed.
+
+![Image of the PostgreSQL installer asking for an installation path](./images/edb_windows_psql_installer1.png)
+
+- The installer will ask what components to install. Only install the `command line tools`.
+
+![Image of the PostgreSQL installer asking what components to install](./images/edb_windows_psql_installer2.png)
+
+- Finally, add the path to the binaries in the PgManage’s `Utilities Menu → Settings`. Notice that the binary files are inside the `bin` folder.
+
+![Image of the settings dialog](./images/pgmanage_windows_binaries_validation.png)
+
+#### Installing Client Utilities on Linux:
+
+Setting up paths to PostgreSQL client binaries is not necessary for Linux systems because these will be automatically discovered in the $PATH environment variable. Still, there are some cases in which the path autodiscovery may fail:
+
+- if multiple versions of the PostgreSQL client binaries are installed
+
+- if the PostgreSQL client binaries are installed in a location not included in the $PATH environment variable
+
+Once you have installed your preferred PostgreSQL’s version, add the path of the binaries in `Utilities Menu → Settings`.
+
+> **Note:** You may install PostgreSQL for your particular Linux distribution on [postgresql.org](https://www.postgresql.org/download/linux/).
+
+#### Installing Client Utilities on Mac
+
+To install the client binaries in MacOS, there are two options: to install the complete Postgres packages or to only  install libpq and then update the PATH.
+
+To install the complete Postgres’s packages run the following command:
+
+```
+	brew install postgresql@[Major version]
+```
+
+To install only the binaries and update the PATH variable, run the following commands:
+
+```
+	brew install libpq
+	echo 'export PATH="/usr/local/opt/libpq/bin:$PATH"' >> ~/.zshrc	
+```
+
+Once you have installed your preferred Postgres version, add the path to the binaries in `Utilities Menu → Settings`.
+
+> **Note:** For more information on how to install Postgres on Mac, refer to [Postgres' documentation](https://www.postgresql.org/download/macosx/).
+
+---
+
 ### Oracle Support
 
 A note about extra dependencies for Oracle support.
 
-### Postgresql Client
-While being self-contained application for the majority of features, pgmanage relies on postgresql command line tools to perform database backup and restore operations.
-
-TODO: add installation guide for various linux distros, windows and osx\
-TODO: add note about extra dependencies for Oracle support.
-
+---
 
 ## Launching the App
 
 When the application starts for the first time, it will prompt a message to set up a master password. Fill up the provided fields and press `Set master password`.
+This password will be requested the next time you open the application but you may reset it with a `Reset Master Password` button. 
 
-This password will be requested the next time you open the application but you may reset it with a “Reset Master Password” button.
+>**Note:** resetting the master password will erase all the information that was encrypted with it, including database connection credentials.
 
 ![Setting up the master password](./images/master_pass.png)
 
@@ -64,22 +126,21 @@ PgManage stores sensitive data, such as database access credentials and SSH keys
 ---
 
 ## Creating your first DB connection
+
 Click on the ⚡ icon on the left sidebar, the connection management UI will be shown:
-![Connection Management](./images/connection_mgr.png)
+  
+![Connection Management](./images/connection_mgr.png)  
 
-Connections and Connection Groups are shown on the left, clicking on the left panel items shows the item's view/edit form.
+Connections and Connection Groups are shown on the left. Clicking on the left panel items shows the item’s view/edit form. Click on `➕ Add → Connection`. Set the connection title and database type; the rest of the form will change depending on the database type selected. Fill in the rest of the database connection properties.
 
-Click the `➕ Add` button, select Connection
-Set connection title and database type, the rest of the form will change depending on the database type selected.
-Fill in the rest of database connection properties.
-**Note:** Alternatively the connection string may be used to establish a database connection.
+> **Note:** Alternatively, the connection string may be used to establish a database connection.
 
 There are two special connection types, which behave differently:
 
 - **SQLite connections** do not need any other settings besides the sqlite3 file path.
 - **Terminal connections** are shell/console sessions with a remote host. These require setting SSH properties.
 
-> **Note:** the password field is optional. If you leave it empty, the password prompt will be shown each time before establishing the connection. For PostgreSQL connections, PgManage will also try to retrieve the connection password from the `.pgpass` file, unless the connection properties are provided in connection string form.
+> **Note:** the password field is optional. If you leave it empty, the password prompt will be shown each time before establishing the connection. For PostgreSQL connections, PgManage will also try to retrieve the connection password from the `.pgpass` file.
 
 ### SSH Tunnelling
 

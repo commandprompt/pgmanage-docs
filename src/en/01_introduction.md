@@ -23,7 +23,9 @@ PgManage’s interface allows to quickly switch between database sessions throug
  - Mac OSX
 
 > **Note:** PgManage currently only supports x86_64 architecture. ARM64 support may be added in the future.
+
 > **Note:** Only Windows 10 and higher versions are supported
+
 ## Credits
 
 - [OmniDB](https://github.com/OmniDB/OmniDB)
