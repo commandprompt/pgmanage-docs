@@ -14,21 +14,23 @@ The **context menus** can be accessed by right-clicking on one of the tree nodes
 
 ![Tree context menu when right-clicking on an object](./images/context_menu.png)
 
-The actions available depend on the selected database object. Here is a list of command actions on alphabetical order:
+The actions available depend on the selected database object. Here is a list of available actions:
 
 - **Alter/edit:** opens a new tab with an interface to alter the given object. For example, a table may be altered by right-clicking on the table object and selecting `Table Actions → Alter Table`. From there, you may do the following:
-    - Change a field by double-clicking
+    - Change table columns attributes like column name, data type, default value, nullable etc.
     - Add a column with the `Add Column` button
     - Remove a column with the `❌ icon` at the end of each row
-    - Check the generated query under the `Generated SQL`
-    - Execute the generated query with the `Apply Changes` button.
+
+    The SQL query to be executed is displayed on te bottom part of the screen. The query is updated on the fly as you change table properties.
+    Click the `Apply Changes` button to execute the query.
 
 ![Alter table interface](./images/alter_table.png)
+> **Note:** The Table Editor functionality is currently available for PostgreSQL only. Support for other databases is planned in future releases.
 
-- **Analyze Table:** opens a query tab with a template for the [ANALYZE](https://www.postgresql.org/docs/current/sql-analyze.html) action.
-- **Create:** opens a new tab with an interface to create the given object. For example, a table may be created by right-clicking on the `Tables` object and selecting `Create Table`. From here you may do the following:
-    - change the table name
-    - change the assigned schema
+
+- **Create:** opens a new tab with an interface to create the given object. For example, a table may be created by right-clicking on the `Tables` node and selecting `Create Table`. From here you may do the following:
+    - set the table name
+    - set the schema for the new table
     - edit the columns by double-clicking on the fields
     - add a column with the `Add Column` button
     - remove a column with the `❌ icon` at the end of each line.
@@ -38,16 +40,16 @@ The actions available depend on the selected database object. Here is a list of 
 
 ![Create table interface](./images/create_table.png)
 
+- **Analyze Table:** opens a query tab with a template for the [ANALYZE](https://www.postgresql.org/docs/current/sql-analyze.html) action.
 - **Drop/Delete:** deletes the selected object from the server.
+- **ER Diagram:** opens a tab with an Entity Relationship diagram.  \
+This feature is available by right-clicking one of the schema nodes and selecting `ER Diagram`. The newly opened tab will display visualization of tables and their relations within the selected schema. You can highlight table relations by clicking foreign key column inside of table widgets or by clicking the the relation arrow.
+
+
+![Entity Relationship diagram with a hilighted foreighn key](./images/erd.png)
 - **Monitoring:** the dashboard or the backends may be selected to be opened on a new tab.
 - **Refresh:** refreshes the selected object.
 - **Reindex:** opens a query tab with a template for the [REINDEX](https://www.postgresql.org/docs/current/sql-reindex.html) action.
-- **Render Graph:** opens a tab with an Entity Relationship diagram. This feature is available by right-clicking one of the schema objects and selecting `ER Diagram`. From there, you may:
-    - move the tables by clicking and dragging
-    - click on the name of a foreign key to highlight the table's relation with another.
-
-![Entity Relationship diagram with a hilighted foreighn key](./images/erd.png)
-
 - **Server Configuration:** opens the Server Configuration settings tab.
 - **Truncate Table:** opens a query tab with a template for the [TRUNCATE](https://www.postgresql.org/docs/current/sql-truncate.html) action.
 - **Update Records:** opens a query tab with a template for the [UPDATE](https://www.postgresql.org/docs/current/sql-update.html) action.
