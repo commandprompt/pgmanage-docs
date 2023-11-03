@@ -222,7 +222,7 @@ Once the desired changes are done, click on the `Apply changes` button.
 
 ## Exporting Query Data
 
-Once a query has been entered, the resulting data can be exported into `.CSV` and `.XLSX` files. To export data, select the format at the button right of the query tab and click the download button.
+Once a query has been entered, the resulting data can be exported into `.CSV`/`.CSV no headers` and `.XLSX`/`.XLSX no headers` formats. To export data, select the export format in the dropdown at the button right of the query tab and click the download button.
 
 ![Close up to the exporting data drop-down menu](./images/exporting_data.png)
 
@@ -257,7 +257,7 @@ Under the `Actions` column, you may view details about a specific job or delete 
 
 > **Note:** The backup and restore features run in the background, allowing you to navigate outside of the current tab without pausing the process.
 
-### PIGZ Support 
+### PIGZ Support
 PIGZ compression is now available for Linux. If desired, PIGZ needs to be installed on the target OS. For example, in Ubuntu, you may install it as follows:
 
 ```
@@ -295,45 +295,39 @@ Once the general information is filled out the `Revert Settings`, `Preview`, and
 ---
 ## pg_cron GUI Instructions
 
-First, install pg_cron in your target OS. For example, in Ubuntu, you may install it as follows:
+First, install pg_cron extension in your target OS. For example, in Ubuntu, you may install it as follows:
 
 ```
 sudo apt-get -y install postgresql-[postgres version]-cron
 ```
 
-Next, add pg_cron to `shared_preload_libraries` in postgresql.conf. To do this change the following parameter:
+Next, add pg_cron to `shared_preload_libraries` in server configuratiom management moule:
+
+![PG Cron in shared preload librarues](./images/pg_cron_shared_preload.png)
+
+Reload postgres configuration to apply the changes:
 
 ```
-shared_preload_libraries = 'pg_cron'
+sudo pg_ctlcluster [version] [cluster_name] reload
 ```
+Then, the pg_cron functions and metadata tables can be created.
 
-> **Note:** to get the path to your postgresql.conf file you may run the following query: `SHOW config_file;` To get the path to your pg_hba.conf file run the following query: `SHOW hba_file;`
+Add *pg_cron* extension via Extension Manager:  \
+![PG Cron add extension](./images/pg_cron_add_extension.png)
 
-Restart the postgres service so that the changes in the configuration take effect:
+Now the new `Jobs` item should be available under the database node:
+![PG Cron Jobs Node](./images/pg_cron_jobs_node.png)
 
-```
-sudo systemctl restart postgresql-[version].service
-```
+A new job can be created by right clicking the `Jobs` node, existing jobs can be edited by selecting the ``View/Edit`` option from the job context menu.
+In the Job dialog the following options are available:
+- **Job Name**
+- **Run In Database**: the database against which run the query
+- **Run At/Cron expression**: the period for running the job. You can use the Cron schedule widget to define the schedule or click the ``Define manually`` switch and write Cron expression by hand.
+- **Command to Run**: the SQL expression to be executed at the specified schedule
 
-Then, the pg_cron functions and metadata tables can be created. In the postgres shell run the following as super user:
+When viewing the existing job, the ``Job Statistics`` tab can be used to view last 50 job execution results.
 
-```
-CREATE EXTENSION pg_cron;
-```
+![PG Cron UI dialog](./images/pg_cron_modal.png)
 
-To ensure that pg_cron can start jobs, libpg needs permission to open a connection to the local database. This can be done by enabling `trust` authentication for connections coming from localhost. In your `pg_hba.conf` file, add the following line under "IPv4 local connections":
-```
-host    all           all           0.0.0.0/0          md5
-```
-
-Add the following line at the end of the `pg_hba.conf` file to allow connections from all hosts:
-```
-hostssl	 all         all          0.0.0.0/0    		md5
-```
-
-> **Note:** for more information on installing and setting up a cron extention, visit [pg_cron's GitHub repository](https://github.com/citusdata/pg_cron)
-
-Now, PgManage should display the `jobs` node under the database node.
-
-**TODO:** add detailed pg_cron GUI instructions
-brief:install pg_cron extension via extension manager. the "jobs" node should appear under the database node. right click-> new job
+**Important:** By default, pg_cron uses libpq to open a new connection to the local database, which needs to be allowed by pg_hba.conf. It may be necessary to enable trust authentication for connections coming from localhost in for the user running the cron job, or you can add the password to a .pgpass file, which libpq will use when opening a connection. \
+Please refer to [official pg_cron documentation](https://github.com/citusdata/pg_cron#ensuring-pg_cron-can-start-jobs) for more details.
