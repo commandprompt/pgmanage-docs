@@ -177,25 +177,25 @@ When the `Extensions` node is right-clicked, the following menu will be displaye
 
 ![Extensions node with menu](./images/extensions0.png)
 
-By clicking `Create Extension UI` a menu will open with a user interface, allowing to enter the extension name, a comment, a schema, and a version. A preview of the created query will be displayed under "Preview":
+Clicking `Create Extension UI` option will open the extension management dialog. Here you can select the extension to be installed, the scheme where to install the extension and the extension version. Optionally, you can set the extension comment. A preview of the created query will be displayed under the preview section "Preview". Click `Save` button to apply the changes.
 
 ![Create Extension menu](./images/create_extension.png)
 
 Right-clicking on a given extension will display a menu with the following options:
 
-- **Alter Extension UI:** The `Alter Extension UI` option will open a user interface to create an `ALTER EXTENSION` query. This displays the following fields: the name of the extension, a comment, the schema, the version, and the query's preview.
+- **Alter Extension UI:** The `Alter Extension UI` option will open management dialog for the selected extension. Here you can alter the properties of the existing extension.
 
 ![Alter Extension menu](./images/alter_extension.png)
 
-- **Alter Extension:** Displays a template on a new tap with an `ALTER EXTENSION` query.
+- **Alter Extension:** Displays a template on a new tab with an `ALTER EXTENSION` query.
 
-- **Edit Comment:** Displays a template on a new tap with a `COMMENT ON EXTENSION` query.
+- **Edit Comment:** Displays a template on a new tab with a `COMMENT ON EXTENSION` query.
 
 - **Drop Extension UI:** The `Drop Extension UI` will open a prompt confirming if the given extension should be dropped. Cascading can be enabled if desired.
 
 ![Drop Extension menu](./images/drop_extension.png)
 
-- **Drop Extension:** Displays a template on a new tap with a `DROP EXTENSION` query.
+- **Drop Extension:** Displays a template on a new tab with a `DROP EXTENSION` query.
 
 ---
 
