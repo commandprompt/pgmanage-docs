@@ -199,19 +199,21 @@ Right-clicking on a given extension will display a menu with the following optio
 
 ---
 
-## Data Editor Grid
+## Data Editor
 
-The data editor grid allows editing data of a specified query in a visual format. This feature can be accessed by right-clicking on a table in the DB entity tree.
+The data editor allows editing data of a specified table in a visual format. This feature can be accessed by right-clicking on a table node in the DB entity tree.
 
 ![Image illustrating how to access the data editor grid](./images/edit_data_light.png)
 
-Then, a new tab will be created with the data editor. By default, the first 10 rows of the `SELECT * from [table] ORDER BY t.id` query will be displayed. A text field allows to change the query's conditions.
+Then, a new tab will be created with the data editor. By default, the first 10 rows of the `SELECT * from [table] ORDER BY t.id` query will be displayed. A text field allows to change the query's conditions. Click on the funnel button to apply new filter settings.
 
 ![Image showing the data grid tab](./images/data_editor0.png)
 
-The data editor grid allows the following changes:
+The data editor allows the following changes:
+- **Add a row:** Click on the `➕ icon` on the top-left of table header. The new empty row will be added to the top of the grid.
 - **Delete a row:** Click on the `❌ icon` next to a row and it will become red. You may deselect the row with the going back icon next to the row.
-- **Edit cells:** Double-click on a data cell to edit the grid.
+- **Edit cells:** Double-click on a data cell to edit
+- **Revert Changes**: changed table rows are marked with red and orange colors for deleted and edited rows respectively. You can revert row changes by clicking the revert button to the left of the row.
 - **Displayed rows:** Click on the `Limit` dropdown menu and select the number of desired rows.
 
 Once the desired changes are done, click on the `Apply changes` button.
