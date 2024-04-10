@@ -2,11 +2,11 @@
 
 ![PgManage application](./images/intro.png)
 
-PgManage is a modern Open-Source Database Client application. This application provides an easy-to-use environment for querying and administrating multiple DBMS distributions – such as PostgreSQL, SQLite, MySQL, MariaDB, and Oracle.
+PgManage is a modern Open-Source Graphical Database Client which provides an easy-to-use environment for querying and administrating multiple DBMS distributions – such as PostgreSQL, SQLite, MySQL, MariaDB, and Oracle.
 
 Though now dormant, the [OmniDB](https://github.com/OmniDB/OmniDB) project provided important underlying work for the expansions done on PgManage. OmniDB was a lightweight, browser-based application that supported PostgreSQL, Oracle, MySQL, and SQLite. PgManage continues OmniDB’s legacy by providing a simple, unified interface to manage DBMS.
 
-PgManage’s interface allows to quickly switch between database sessions through a connections sidebar. The application allows to run queries, monitor databases, and manage PostgreSQL server configuration, among other features. Though the project is currently focused on database management, features for developers are being planned as the project progresses.
+PgManage’s interface allows to quickly switch between database sessions through a connections sidebar. The application allows to run queries, visualize database performance metrics, and manage PostgreSQL server configuration and back-ups, among other features. Though the project is currently focused on database management, features for developers are being planned as the project progresses.
 
 ## Supported Databases
 
@@ -24,9 +24,7 @@ PgManage’s interface allows to quickly switch between database sessions throug
 
 > **Note:** PgManage currently only supports x86_64 architecture. ARM64 support may be added in the future.
 
-> **Note:** Only Windows 10 and higher versions are supported
-
 ## Credits
 
-- [OmniDB](https://github.com/OmniDB/OmniDB)
-- [Dalibo Postgres Explain Visualizer 2](https://github.com/dalibo/pev2)
+- We proudly leverage all of the great work done by the original (now dormant) project [OmniDB](https://github.com/OmniDB/OmniDB)
+- Postgres query plan visualization is powered by [Dalibo Postgres Explain Visualizer 2](https://github.com/dalibo/pev2)
