@@ -9,6 +9,9 @@
    id="svg5"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
    sodipodi:docname="welcome-overview.svg"
+   inkscape:export-filename="/home/eugend/cmd/mps/pgmanage-docs/src/en/images/main_pg.png"
+   inkscape:export-xdpi="80"
+   inkscape:export-ydpi="80"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -25,9 +28,9 @@
      inkscape:document-units="mm"
      showgrid="false"
      units="px"
-     inkscape:zoom="0.37460368"
-     inkscape:cx="328.34702"
-     inkscape:cy="284.30047"
+     inkscape:zoom="0.5297696"
+     inkscape:cx="624.79991"
+     inkscape:cy="516.26216"
      inkscape:window-width="1920"
      inkscape:window-height="990"
      inkscape:window-x="0"
@@ -2071,21 +2074,22 @@ ffV138sCAAA9mxZ05ccks96kZp6w6jCCrYSACwAAYI3durWr19680vcyAADACpol6Ooee5DXPUz2
        d="m 296.27091,100.95921 h 8.22046 v 83.43116 h -9.07812"
        id="path1447-3" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#1560ad;stroke-width:0.464999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 296.66927,5.4779636 h 8.22046 V 17.113397 h -9.07812"
-       id="path1447-3-5" />
+       style="fill:none;fill-rule:evenodd;stroke:#1560ad;stroke-width:0.464998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 295.87139,6.1549724 h 9.01834 V 17.113397 h -9.07812"
+       id="path1447-3-5"
+       sodipodi:nodetypes="cccc" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.55825px;line-height:125%;font-family:'A.C.M.E';-inkscape-font-specification:'A.C.M.E';letter-spacing:0px;word-spacing:0px;fill:#1560ad;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-122.28043"
-       y="9.2530842"
+       x="-110.20732"
+       y="9.7834139"
        id="text10205"
        transform="rotate(-90)"><tspan
          sodipodi:role="line"
          id="tspan10203"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.55825px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#1560ad;fill-opacity:1;stroke-width:0.264583px"
-         x="-122.28043"
-         y="9.2530842">Primary Menu</tspan></text>
+         x="-110.20732"
+         y="9.7834139">Sidebar</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.55825px;line-height:125%;font-family:'A.C.M.E';-inkscape-font-specification:'A.C.M.E';letter-spacing:0px;word-spacing:0px;fill:#1560ad;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
