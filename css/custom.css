@@ -1,0 +1,117 @@
+/* Import from Google Fonts, a CDN, or files in your _static folder.
+   This Google Fonts import provides its own `@font-face` CSS;
+   if providing your own font files, you'll also need to
+   provide your own `@font-face` code. */
+   @import url("https://fonts.googleapis.com/css2?family=Roboto");
+
+   :root {
+     --main-blue: #1560ad;
+   }
+   
+   body {
+     font-family: "Roboto", sans-serif;
+   }
+   
+   .bg-primary {
+     background-color: #1560ad !important;
+   }
+   
+   .theme-dark > .bg-primary {
+     background-color: #162d4e !important;
+   }
+   
+   body.theme-dark {
+     background-color: #101d2e;
+   }
+   
+   body.theme-dark .form-control {
+     color: #f8fafd;
+     background-color: #1a2234;
+     border-color: #162d4e;
+   }
+   
+   body.theme-dark .input-group-text.bg-white {
+     background-color: #1a2234 !important;
+   }
+   
+   body.theme-dark .input-group-text {
+     border-color: #162d4e;
+   }
+   
+   body.theme-dark hr,
+   body.theme-dark .border,
+   body.theme-dark .with-border,
+   body.theme-dark .border-top,
+   body.theme-dark .border-right,
+   body.theme-dark .sidebar-container,
+   body.theme-dark .border-bottom,
+   body.theme-dark .border-left,
+   body.theme-dark .search li {
+     border-color: #162d4e !important;
+   }
+   
+   body.theme-dark .btn-link:focus,
+   body.theme-dark .btn-link:hover,
+   body.theme-dark a:focus,
+   body.theme-dark a {
+     text-decoration-color: var(--main-blue) !important;
+   }
+   
+   body a:focus,
+   body a {
+     text-decoration-color: var(--main-blue) !important;
+     color: #6c6c6c;
+   }
+   
+   body.theme-dark a:focus,
+   body.theme-dark a:hover,
+   body a:focus,
+   body a:hover,
+   .page-toc a:hover,
+   .page-toc a:focus {
+     color: var(--main-blue);
+   }
+   
+   body.theme-dark .btn-link:focus,
+   body.theme-dark .btn-link:hover {
+     color: #fff;
+   }
+   
+   body .toc .current > a {
+     color: #000;
+     font-weight: bold;
+   }
+   
+   body.theme-dark .btn-light {
+     background-color: rgba(21, 96, 173, 0.15);
+     border: 1px solid var(--main-blue) !important;
+   }
+   
+   body.theme-dark .btn-light:hover,
+   body.theme-dark .btn-light:focus,
+   body.theme-dark .btn-light:focus-within,
+   body.theme-dark .btn-light:not(:disabled):not(.disabled):active,
+   body.theme-dark .btn-light:not(:disabled):not(.disabled).active {
+     color: #fff;
+     background-color: var(--main-blue);
+   }
+   
+   pre {
+     background-color: var(--main-blue);
+   }
+   
+   ::-moz-selection {
+     color: #fff;
+     background-color: var(--main-blue);
+   }
+   
+   ::selection {
+     color: #fff;
+     background-color: var(--main-blue);
+   }
+   
+   :focus {
+    outline: 2px solid  var(--main-blue) !important;
+    outline-offset: 1px;
+    box-shadow: none;
+  }

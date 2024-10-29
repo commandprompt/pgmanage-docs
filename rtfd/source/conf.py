@@ -18,11 +18,12 @@
 # -- Project information -----------------------------------------------------
 
 project = 'PgManage'
-copyright = 'CommandPrompt Inc'
+copyright = '2023-%Y, CommandPrompt Inc.'
 author = 'The PgManage Team'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0b3'
+release = '1.2'
+version = '1.2'
 
 # Path to the initial page
 master_doc = 'index'
@@ -33,7 +34,7 @@ master_doc = 'index'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['recommonmark']
+extensions = ['recommonmark', 'sphinx_wagtail_theme']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -49,11 +50,29 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinx_wagtail_theme'
+
+html_theme_options = dict(
+    project_name = "The PgManage Handbook",
+    logo = "logo_gears_flat.svg",
+    logo_alt = "PgManage",
+    logo_height = 59,
+    logo_url = "/",
+    logo_width = 45,
+    github_url = "https://github.com/commandprompt/pgmanage-docs/blob/master/src/",
+    footer_links = ",".join([
+        "CommandPrompt Inc.|https://commandprompt.com/",
+        "Download PgManage|https://github.com/commandprompt/pgmanage/releases",
+        "PgManage on Discord|https://discord.com/channels/710918545906597938/1077284441279443054",
+    ]),
+    # FIXME - this does not work with wagtail theme
+    # html_show_sourcelink = False,
+    # html_show_sphinx = False
+)
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-# html_static_path = ['_static']
-
+html_static_path = ['../../img', '../../css']
+html_css_files = ["custom.css"]
 myst_gfm_only = True
