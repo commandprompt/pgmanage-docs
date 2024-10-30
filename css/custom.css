@@ -115,3 +115,24 @@
     outline-offset: 1px;
     box-shadow: none;
   }
+  
+  img {
+    border-radius: 5px;
+  }
+  
+  body code {
+    color: #ff8c00;
+    background-color: rgba(252, 138, 0, 0.1);
+    border: none;
+    border-radius: 5px;
+    padding: 3px;
+  }
+  
+  body.theme-dark code {
+    color: #ff8c00;
+    background-color: rgba(252, 138, 0, 0.15);
+    border: 1px solid #ff8c00;
+    border-radius: 5px;
+    padding: 3px;
+  }
+  
