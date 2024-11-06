@@ -1,6 +1,6 @@
 # Introduction
 
-<video src="../_images/showcase.webm" width="100%" autoplay></video>
+<video src="https://github.com/commandprompt/pgmanage-docs/raw/refs/heads/master/src/en/images/showcase.webm" width="100%" autoplay></video>
 
 PgManage is a modern Open-Source multi-platform graphical database client and administration toolkit.
 
