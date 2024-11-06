@@ -1,12 +1,19 @@
 # Introduction
 
-![PgManage application](./images/intro.png)
+<video src="../_images/showcase.webm" width="100%" autoplay></video>
 
-PgManage is a modern Open-Source Graphical Database Client which provides an easy-to-use environment for querying and administrating multiple DBMS distributions – such as PostgreSQL, SQLite, MySQL, MariaDB, and Oracle.
+PgManage is a modern Open-Source multi-platform graphical database client and administration toolkit.
 
-Though now dormant, the [OmniDB](https://github.com/OmniDB/OmniDB) project provided important underlying work for the expansions done on PgManage. OmniDB was a lightweight, browser-based application that supported PostgreSQL, Oracle, MySQL, and SQLite. PgManage continues OmniDB’s legacy by providing a simple, unified interface to manage DBMS.
-
-PgManage’s interface allows to quickly switch between database sessions through a connections sidebar. The application allows to run queries, visualize database performance metrics, and manage PostgreSQL server configuration and back-ups, among other features. Though the project is currently focused on database management, features for developers are being planned as the project progresses.
+# Features
+* Multiple Workspaces: connect to and work with multiple databases at once
+* SQL Autocompletion: PgManage suggests completion options as you type. Schema, table, view, function and column completion are supported.
+* Secure Credential Storage: sensitive information such as DB passwords, SSH keys etc. is stored in an encrypted form and protected by Master Password.
+* Postgres Config Management: easily search and tweak your Postgres server configuration parameter using a convenient GUI.
+* Database Backups: back-up and restore your Postgres cluster or database in background while working on other stuff.
+* Visualize: PgManage Supports query plan visualization and entity relationship diagrams.
+* Dark or Light: choose a theme to your taste.
+* Connection tunneling: connect to your database servers through SSH tunnels.
+* Built-in SSH terminal.
 
 ## Supported Databases
 
@@ -28,3 +35,4 @@ PgManage’s interface allows to quickly switch between database sessions throug
 
 - We proudly leverage all of the great work done by the original (now dormant) project [OmniDB](https://github.com/OmniDB/OmniDB)
 - Postgres query plan visualization is powered by [Dalibo Postgres Explain Visualizer 2](https://github.com/dalibo/pev2)
+- Though now dormant, the [OmniDB](https://github.com/OmniDB/OmniDB) project provided important underlying work for the expansions done on PgManage. OmniDB was a lightweight, browser-based application that supported PostgreSQL, Oracle, MySQL, and SQLite. PgManage continues OmniDB’s legacy by providing a simple, unified interface to manage DBMS.
