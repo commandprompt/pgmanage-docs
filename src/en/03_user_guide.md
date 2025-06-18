@@ -4,59 +4,64 @@
 
 ---
 
-## Database Entity Tree and Context Menus
+## Database Tree and Context Menus
 
-The DB entity tree displays the database objects inside a server and is located at the left side of DB workapce once a database session is established.  
+The tree on the left side of workspace displays the objects inside a server once a database session is established.   
 
-Most of the DB tree nodes have a context menu with a list of actions available for the node. The context menu can be accessed by right-clicking on the tree node.
+Most of tree items have a context menu with a list of actions available for item. The context menu can be accessed by right-clicking on the tree node.
 
 ![Tree context menu when right-clicking on an object](./images/context_menu.png)
 
-> _**Hint:**_ The properties of currently selected DB object and it's SQL definition are displayed in the `Properties/DDL` widget at the bottom of DB objec tree
+> 💡 The properties of currently selected DB object and it's SQL definition are shown in  **Properties/DDL** tabs at the bottom of DB object tree
 
 ## Database Operation Tabs
 
-The area to the right of the DB entity tree contains the operation tabs. There several tab types, the most common are:
-  - Query - this tab is used to edit and execute queries against the database
-  - Database Console - shows a command-line-like interface for the database
-  - Monitoring dashboard - displays various database performance metrics for the database.
-  - Backends - displays a list of active database back-ends, allows to terminate a particular back-end.
+The area to the right of the Database Tree contains the operation tabs. There are multiple kinds of tabs, the most common are:
+  - Query - used to edit and execute queries against the database, view and export query results and analyze query performance.
+  - Database Console - shows a command line-like interface for the database
+  - Monitoring Dashboard - displays various performance metrics of the database server.
+  - Backends - displays a list of active database connections, allows to terminate a particular back-end.
 
  The tabs listed above can be opened by clicking on the `➕` sign on the tabs panel.
 
 ### Query tab
 
-The Query Tab is used to write and execute SQL queries. The top area of the tab contains the SQL editor. The toolbar in the middle allows to run most frequently used actions such as running the query, formatting query code, import/export SQL from files etc. The bottom part of the screen contains the query result data-grid and query plan visualizer.
+The top area of the tab contains the SQL editor. The toolbar in the middle allows to run most frequently used actions such as running the whole query or its selected part, formatting SQL code, import/export SQL code from files etc. The bottom part of the screen contains the query result data-grid and query plan visualizer (only available for Postgresl).
 
 ![Query tab overview](./images/query_tab-overview.png)
 
 #### Editing the code
-The query editor suports syntax highlighting code completion and formatting for most common SQL dialects.  
+The query editor suports syntax highlighting code completion, code folding and formatting for most common SQL dialects.  
 
-The code completion operates in live mode by default. Live completion may be disabled for the current database connection by toggling the `AB` switch on top of the database object tree. The autocomplete can also be called with a hotkey (`Ctrl-Space`  or `Cmd-Space` by default).
+The code completion operates in live mode by default, providing suggestions as you type. Live completion may be disabled for the current database connection by toggling the `AB` switch on top of the Database Tree. The autocomplete can also be called with a hotkey (`Ctrl-Space`  or `Cmd-Space` by default).
 
-The code can be auto-formatted either clicking the the `Format SQL` button or with a hotkey (`Alt-S` by default)
+The code can be auto-formatted either clicking the the **Format SQL** button or with a hotkey (`Alt-S` by default)
 
->_**Hint:**_ the script in the editor can be saved to a file or loaded from file using the `Save To file` and `Load From File` buttons on the toolbar.
->_**Hint:**_ SQL scripts can also be imported into editor by drag and drop.
+>💡 The script in the editor can be saved to a file or loaded from file using the **Save To file** and **Load From File** buttons on the toolbar.  
+>💡 SQL scripts can also be imported by draggine the file to the editor
 
 #### Running the query
-The query can be executed by clicking the `Run` button on the toolbar.
-The `Run Selection` button allows to execute the selected part of the code in the query editor, if no code is selected the code line under the cursor will be executed. Alternatively, the selected region of the code can be executed via context menu of the editor.
+The query can be executed by clicking the `▶` (Run) button on the toolbar.
+The `[▶︎]` (Run Selection) button allows to execute the selected part of the code in the query editor, if no code is selected the code line where the cursor is will be executed. Alternatively, the selected region of the code can be executed via context menu of the editor.
 
-Once query is executed its output will be displayed in the query results data-grid. Query results with more than 50 rows, are loaded in chunks, click `Fetch More` or `Fetch All` respectively to load the next chunk or complete query result.
+Once query is executed its output will be displayed in the query results data-grid. Query results with more than 50 rows, are loaded in chunks, click `Fetch More` or `Fetch All` respectively to load the next chunk or complete query result; the number of next rows to be fetched can be selected from the drop-down list. 
 
-Query errors returned by the database will be shown as red error annotation to the left of line of the query which caused error. Hover the mouse pointer over annotation to reveal error details.
+Query errors returned by the database will be shown as red annotations to the left of the query line which caused error. Hover the mouse pointer over annotation to reveal error details.
 
 #### Working with query results
-The contents of query results data grid can be copied to clipboard. First, select the rows to be copied by clicking on them, then right-click on the data grid and select the `Copy` option of the context menu.  
+The contents of query results data grid can be copied to clipboard. First, select the rows, cells or a region of the grid, then right-click on the selection and choose the corresponding option of the context menu.  
 
-The contents of data-grid cells can be viewed in a pop-up window, this is especially useful with cells containing large amounts of data. To view the contents of the cell either double-click on it or select the `View Content` option of its context menu.  
-The query result data can be exported into a file by selecting the desired export format in the drop-down (XLSX or CSV) and clicking the `Export Data` button.
+>💡 whole rows or columns can be selected  by clickin on the row number or the column name respectively
 
-> _**Hint:**_ Data-grid columns can be quickly maximized/minimized by double-clicking the corresponding column header.  
-> _**Hint:**_ Hover over the data-grid header to reveal column resize controls.  
-> _**Hint:**_ Click on the `⋮` to the left of data-grid header to reveal grid layout menu  
+![Query result copy](./images/query-result-copy.png)
+
+The contents an individual data-grid cell can be viewed in a pop-up window. This is especially useful with cells containing large amounts of data. To view the contents of the cell either double-click on it or select the `View Content` option of its context menu.  
+
+The query result data can be exported to a file by selecting the desired export format in the drop-down (XLSX CSV or JSON) and clicking the `📥`(Export Data) button.
+
+>💡 Data-grid columns can be quickly maximized/minimized by double-clicking the corresponding column header.  
+>💡 Hover over the data-grid header to reveal column resize controls.  
+>💡 Click on the `⋮` to the left of data-grid header to reveal grid layout menu  
 
 
 #### Re-running previous queries
@@ -65,14 +70,14 @@ PgManage keeps the history of previously executed queries. The history can be se
 ![Image showing the query history](./images/history.png)
 
 Click the `Query History` button to bring up the history modal.  
-Right-click on the cell of `Command` column of the history record and select the `Copy Content to Query Tab` context menu option. Alternatively, just double click on the particular history command cell.
+Right-click on the cell of **Command** column of the history record and select the `Copy Content to Query Tab` context menu option. Alternatively, just double click on the particular cell of the Command column.
 
 #### Visualizing the query execution plan
 The query execution plan visualizer can be called by switching to the explain link of the query tab. To run `EXPLAIN ANALYZE` click on the corresponding button on the toolbar. Alternatively the query can be prepended by `EXPLAIN` or `EXPLAIN ANALYZE` keywords and executed. 
   
 ![Query tab with the explain tree under it](./images/query_tab_explain.png)
 
-> _**Note:**_ The Explain functionality is available for PostgreSQL only.
+> ℹ️ The Explain functionality is available for PostgreSQL only.
 
 
 ### Console tab
@@ -83,55 +88,75 @@ The database console behaves similarly to native database console tools like psq
 
 ### Monitoring dashboard
 
-The monitoring dashboard displays various database performance metrics in form of graph/chart/grid widgets:
+The monitoring dashboard displays various database performance metrics in form of graph/chart/grid widgets.
+>ℹ️ the monitoring dashboard is available for PostgreSQL, MariaDB, and MySQL only.
 
-- Activity
-- Autovac Freeze: Top 20 Tables
-- Autovacuum Freeze
-- Autovacuum Workers Usage
-- Backends
-- Bloat: Top 20 Tables
-- Blocked Locks
-- Checkpoints
-- Database Growth Rate
-- Database Size
-- Heap Cache Miss Ratio
-- In Recovery
-- Index Cache Miss Ratio
-- Long Autovacuum
-- Long Query
-- Long Transaction
-- Seq Scan Ratio
-- Temp Files Creation Rate
-- WAL Production Rate
-- Transaction Rate
+![Dashboard overview](./images/dashboard-overview.png)  
 
-The list of displayed monitoring widgets can be configured by clicking on `Manage Widgets` and selecting the desired graphs. Existing  widgets can be removed from the dashboard by clicking the `❌` icon of the corresponding widget.  
+Displayed widgets can hidden from the dashboard by clicking the `✖` icon of the corresponding widget.  
+Widgets refresh their data periodically. The refresh period of each widget can set by clicking on the current refresh period of the widget and selecting the new option from the drop-down.  
+Widget auto-refresh can be toggled by clicking the `▶/❚❚` button.
 
-The refresh interval of each widget can be configured by entering the number of seconds in the corresponding input field of the widget and hitting the enter key.  
+Here is a list of widgets available for PostgreSQL database:
 
-Custom monitoring widgets may be created by `Manage Widget → New Widget`. This will open a modal window where name, type, refresh interval and template can be specified. Once a template has been selected, you may edit the data source script and graph parameters.
+| Widget   | Type  | Description |
+| -------- | ----- | ----------- |
+| Activity  | Grid | Lists database backends, similar to Backends tab    |
+| Autovac Freeze: Top 20 Tables | Grid | Top 20 tables|
+| Autovacuum Freeze    | Grid |  Autovacuum freeze percentage |
+| Autovacuum Workers Usage | Timeseries | Percentage of busy autovacuum workers on the server |
+| Backends | Grid | Number of backends on the server |
+| Backends | Chart | Number of backends used per database |
+| Bloat: Top 20 Tables | Grid | Lists Top 20 bloated tables for the currently selected database |
+| Blocked Locks | Timeseries | Number of blocked locks over time |
+| Checkpoints | Timeseries | Number of checkpoints |
+| Database Growth Rate | Timeseries | Database growth rate |
+| Database Size | Chart | Database sizes for the current server |
+| Heap Cache Miss Ratio | Timeseries | Heap Cache Miss Ratio
+| In Recovery | Text | Indicates if server is in recovery |
+| Index Cache Miss Ratio | Timeseries | Index Cache Miss Ratio
+| Long Autovacuum | Timeseries | Long Autovacuum | 
+| Long Query | Timeseries | Long Query | 
+| Long Transaction | Timeseries | Long Transaction | 
+| Seq Scan Ratio | Timeseries | Sequential scan ratio |
+| Temp Files Creation Rate | Timeseries | Temp Files Creation Rate |
+| WAL Production Rate | Timeseries | WAL Production Rate |
+| Transaction Rate | Timeseries | Total number of transactions (commits+rollbacks) over time for the current server |  
 
+Widget visibility, display order and customization can be done in widget management dialog accessible by clicking the `Manage Widgets` button.
+
+
+![Dashboard widget management dialog](./images/dashboard-widget-management.png)  
+
+Custom monitoring widgets may be created by clicking `New Widget` button. This will open a widget editor:
 ![Display of the monitor unit creation form](./images/monitor_unit.png)
 
->_**Note:**_ the monitoring dashboard is available for PostgreSQL, MariaDB, and MySQL only.
+The easiest way to create a new widget is by using an existing one as a template.
 
 
 ### Backends/Process List
 
-The `Backends` tab displays the list of active database session processes with information such as process id, start time, query, transaction start time, connected user, etc. One can terminate a running back-end process by clicking the `❌` icon.  
->__**Note:**__ the Backends/Process list tab is available for PostgreSQL, MariaDB, and MySQL only.
+This tab displays the list of active database session processes with information such as process id, start time, query, transaction start time, connected user, etc. One can terminate a running back-end process by clicking the `❌` icon.  
+>ℹ️ the Backends/Process list tab is available for PostgreSQL, MariaDB, and MySQL only.
 
 ---
 
 ## Editing Table Data
 
-Table data can be edited in visual format using the Data Editor module. This feature can be accessed by right-clicking on a table node in the DB entity tree.
+Table data can be edited in visual format using the Data Editor module. To open data editor right click on the table node in the database-tree and select `Data actions -> Edit Data` from the context menu.
 
-![Image illustrating how to access the data editor grid](./images/edit_data_light.png)
+![Image illustrating how to access the data editor grid](./images/edit_data_light.png)  
 
-A new data editor tab will be shown. By default, the first 10 rows of the query will be fetched. A text field allows to change the query's conditions. Click on the funnel button to apply new filter and limit settings.
+A new data editor tab will be shown. By default, the first 10 rows of the query will be fetched with no filters applied.
 
+### Filtering the data
+Extra data filtering can be applied by either adding filtering criteria visually or by toggling plain SQL input and entering clause manually.
+Click on the funnel button to apply new filter and limit settings.
+![Visual data filters](./images/data-filter-visual.png)  
+
+![Manual data filters](./images/data-filter-sql.png)
+
+### Making changes
 ![Image showing the data grid tab](./images/data_editor0.png)
 
 The data editor allows the following changes:
@@ -140,7 +165,7 @@ The data editor allows the following changes:
 - **Edit cells:** Double-click on a data cell to enter the edit mode, make the changes, click outside the cell to exit from edit mode, hit `Esc` key to discard cell changes.
 - **Revert the Changes**: changed table rows are marked with red and orange colors for deleted and edited rows respectively. You can revert the changes by clicking the revert button to the left of the row.
 
-Once the desired changes are done, click on the `Apply changes` button.
+Once the desired changes are done, click on the `Apply changes`.
 
 ---
 
@@ -152,17 +177,16 @@ To edit an existing table righ-click on it's DB tree node and select `Table Acti
 The schema editor tab will be shown
 ![Schema Editor Tab](./images/schema_editor_new_table.png)
 
-Define table column, their order and properties.  
+Define table columns, their order and properties.  
 The SQL code for operations to be performed will be updated in live mode as you change the table definition.  
-Each column widget has several action buttons on the right.  
+Each column item has several action buttons on the right.  
 Newly created columns can be reordered by clicking UP and DOWN buttons.
 Columns can also be deleted. Newly defined columns will be removed immediately. Existing columns will be marked for deletion (highlighed in red), deletion can be reverted by clicking the revert button.  
 
 Once ready, click the `Apply Changes` to execute the generated SQL code.
 
-Note:
->_**Note:**_ UI controls available in Schema Editor may be different depending on the database type and operation type (create/edit).
->_**Note:**_ Table indexes can be defined for existing tables only.  
+>ℹ️ UI controls available in Schema Editor may be different depending on the database type and operation type (create/edit).
+>ℹ️ Table indexes can be defined for existing tables only.  
 
 ---
 
@@ -181,7 +205,7 @@ To open existing snippet for editing double click its node in the tree.
 
 Snippets can be organized in folders. To create a folder right-click a parent node for the folder in the tree and select the `New Folder` option from context menu.  
 
->_**Note:**_ Snippet contents can be saved to file or loaded from file using the correspoding toolbar buttons.
+>ℹ️ Snippet contents can be saved to file or loaded from file using the correspoding toolbar buttons.
 
 To use a saved snippet, open a query tab and right-click on the query editor. Here you may use, overwrite, or create a snippet.
 The snippets can then be used in the query editor by clicking on of the items under the `Use Snippet` context menu section.
@@ -221,7 +245,7 @@ Once the necessary set of configuration changes is made the changes must be appl
 Once committed, the server configuration changes will be applied and the snapshot of the previous configuration should appear in the `Config History` drop-down menu.  
 One may return to a previous configuration snapshot by selecting the snapshot from the dropdown menu, clicking the revert button, and confirming the operation.
 
->_**Note:**_ PgManage will notify the user if any configuration changes require a PostgreSQL server restart that should be done manually.
+>ℹ️ PgManage will notify the user if any configuration changes require a PostgreSQL server restart that should be done manually.
 
 ![Screenshot of the Server Configuration interface](./images/server_configuration_light1.png)
 

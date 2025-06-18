@@ -1,6 +1,6 @@
 # Introduction
 
-<video src="https://github.com/commandprompt/pgmanage-docs/raw/refs/heads/master/src/en/images/showcase.webm" width="100%" autoplay></video>
+<video src="https://github.com/commandprompt/pgmanage-docs/raw/refs/heads/master/src/en/images/showcase.webm" width="100%" autoplay="true" loop="true"></video>
 
 PgManage is a modern Open-Source multi-platform graphical database client and administration toolkit.
 
@@ -13,6 +13,7 @@ PgManage is a modern Open-Source multi-platform graphical database client and ad
 * Visualize: PgManage Supports query plan visualization and entity relationship diagrams.
 * Dark or Light: choose a theme to your taste.
 * Connection tunneling: connect to your database servers through SSH tunnels.
+* Monitoring dashboard: view various DB performance graphs in real time or create your own.
 * Built-in SSH terminal.
 
 ## Supported Databases
