@@ -1,3 +1,4 @@
 sphinx
 recommonmark
 sphinx-wagtail-theme
+sphinx-markdown-tables
