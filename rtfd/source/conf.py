@@ -22,8 +22,8 @@ copyright = '2023-%Y, CommandPrompt Inc.'
 author = 'The PgManage Team'
 
 # The full version, including alpha/beta/rc tags
-release = '1.2'
-version = '1.2'
+release = '1.3'
+version = '1.3'
 
 # Path to the initial page
 master_doc = 'index'
