@@ -144,6 +144,9 @@ OAUTH2_CONFIG = [
         # Oauth scope, ex: 'openid email profile'
         # Note that an 'email' claim is required in the resulting profile
         "OAUTH2_SCOPE": 'email',
+        # Oauth prompt, ex: 'consent select_account'
+        # see https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest for available options
+        "OAUTH2_PROMPT": '',
         # The display name, ex: Google
         'OAUTH2_DISPLAY_NAME': 'Google',
         # Font-awesome icon, ex: 'fa-brands fa-github'
@@ -178,6 +181,9 @@ OAUTH2_CONFIG = [
         # Oauth scope, ex: 'openid email profile'
         # Note that an 'email' claim is required in the resulting profile
         "OAUTH2_SCOPE": 'email',
+        # Oauth prompt, ex: 'consent select_account'
+        # see https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest for available options
+        "OAUTH2_PROMPT": '',
         # The display name, ex: Google
         'OAUTH2_DISPLAY_NAME': 'Google',
         # Font-awesome icon, ex: 'fa-brands fa-github'
