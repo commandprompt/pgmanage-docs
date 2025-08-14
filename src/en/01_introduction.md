@@ -29,8 +29,9 @@ PgManage is a modern Open-Source multi-platform graphical database client and ad
  - Linux
  - Windows 10 and higher
  - Mac OSX
-
+ - Web *
 > **Note:** PgManage currently only supports x86_64 architecture. ARM64 support may be added in the future.
+> ***** Web access is supported by PgManage Enterprise only.  
 
 ## Credits
 
