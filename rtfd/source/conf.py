@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'PgManage'
+project = 'Audax'
 copyright = '2023-%Y, CommandPrompt Inc.'
-author = 'The PgManage Team'
+author = 'The Audax Team'
 
 # The full version, including alpha/beta/rc tags
 release = '1.3'
@@ -53,7 +53,7 @@ exclude_patterns = []
 html_theme = 'sphinx_wagtail_theme'
 
 html_theme_options = dict(
-    project_name = "The PgManage Handbook",
+    project_name = "The Aufax Handbook",
     logo = "logo_gears_flat.svg",
     logo_alt = "PgManage",
     logo_height = 59,
