@@ -1,47 +1,153 @@
-# Enterprise
+# Audax Enterprise Installation
 
-## Installation
+## Amazon AMI
+### Subscribing to the product
+Navigate to the Audax AWS Marketplace page <https://aws.amazon.com/marketplace/pp/prodview-pabbu7itax4ne>  
 
-Pull the latest PgManage Docker image
+Click `View Purchase Options`, to proceed to the subscription page.
+![AWS product listing page](./images/01_aws_marketplace_listing.png)  
+
+
+Click the `Subscribe` button to accept the terms and conditions.  
+The subscription activation may take a few moments to complete. Wait for the confirmation message before proceeding.
+![AWS purchase options and subscribe](./images/02_aws_purchase_options.png)
+
+Once subscription is ready, click `Launch your software`.
+![AWS launch your software](./images/03_aws_launch.png)
+
+Select `Launch from EC2 console` to begin the EC2 instance deployment wizard
+![AWS launch your software](./images/04_aws_launch_console.png)
+
+
+### Starting a new instance  
+There are several important parameters that must be set when launching a new instance.
+
+Set EC2 instance type (t2.medium or larger is recommended).  
+Select or import the SSH keypair that will be used to access Audax instance.
+![EC2 Instance size](./images/05_aws_launch_type_keypair.png)
+
+Configure Security Group to allow inbound TCP cunnection to ports 22 (SSH), 80 (HTTP), 443 (HTTPS).  
+The default security groups configuration already has the necessary rules.  
+**Important:** If you are planning to access Audax Web interface from the internet, ensure that you've selected subnet with public IP addresses
+![EC2 Network and Security Group](./images/06_aws_launch_network.png)
+
+Audax uses a dedicated EBS volume for storing database backups, application logs and other application data.  
+**Size the data volume to meet your backup size demands. The recommended size is 30Gb or more.**  
+Once all the neccessary parameters were set launch the instance, wait for it to start. 
+
+![EC2 Storage](./images/07_aws_launch_storage.png)
+
+    
+### Initial setup  
+Once new instance is running, the setup must be finalized via SSH console.
+
+
+Obtain instance public IP from the details page
+![EC2 Instance Details](./images/08_aws_instance_details.png)
+
+Login to the Audax instance using the SSH keypair selected in the previous step: `ssh ubuntu@<instance-public-ip> `
+    
 ```
-docker pull cmdpromptinc/pgmanage-enterprise:latest
+ssh ubuntu@instance-public-ip
+...
+==========================  
+Welcome to Audax Enteprise  
+==========================  
+INSTANCE ID                 i-08e1e7597b40f79e4
+PUBLIC IP                   <instance-public-ip>
+PUBLIC HOSTNAME             <instance-public-dns-name>
+APPDATA MOUNTED             OK
+CONFIG PRESENT              FAIL
+SERVICE STATUS              STOPPED
+
+Audax config file not found at /appdata/config.py
+Run 'sudo /app/audax-setup' to generate a new configuration
 ```
 
-## Prerequisites
-Before running PgManage docker container create the data and certificate directories on the host machine (referred to as /private/appdata and /private/appdata in the following examples) and the directory its ownership to UID 900 GID 0 (these are the user and group IDs pgmanage service runs as inside the container)
+After login the current instance status and information will be shown.
+Run `sudo /app/audax-setup` to generate app configuration
+
+```
+ubuntu@audax-host:~$ sudo /app/audax-setup
+=== Audax setup ===
+App base path: '/app'
+App config path: '/appdata/config.py'
+See https://pgmanage.readthedocs.io/en/latest/en/05_enterprise.html for details.
+
+SSL enabled? (yes/no, y/n, true/false) [no]: y
+Use builtin certs? (yes/no, y/n, true/false) [yes]: 
+Listening address (e.g. 127.0.0.1, ::1) [::]: 
+Listening port [443]: 
+Configure OAuth2 login providers? (yes/no, y/n, true/false) [no]: 
+URL path to access Audax (ex. https://instance-public-dns-name/<PATH> leave blank to serve from / ) []: 
+
+=== Setup complete ===
+
+....
+
+An initial admin user account has been created with the following credentials
+
+Login: admin
+Password: <instance-id>
+
+IMPORTANT: Change this password after the first login
+
+You can now start using Audax at https://instance-public-dns-name
+```
+
+---
+
+> 💡 The setup is complete, you can now login to Audax by visiting the link printed by the setup script.
+
+configuring oauth  
+
+logging into web ui  
+    change admin password  
+    adding new users  
+
+
+## Docker
+
+Pull the latest Docker image
+```
+docker pull cmdpromptinc/audax-enterprise:latest
+```
+
+### Prerequisites
+Before running Audax docker container create the data and certificate directories on the host machine (referred to as /private/appdata and /private/certs in the following examples) and the directory its ownership to UID 900 GID 0 (these are the user and group IDs audax service runs as inside the container)
 ```
 sudo chown -R 900:0 /private/appdata
 sudo chown -R 900:0 /private/certs
 ```
-Files in /private/appdata and /private/certs should be accessible by pgmanage process running as UID 900 inside the container.
+Files in /private/appdata and /private/certs should be accessible by the web service process running as UID 900 inside the container.
 
-## Examples
+### Launch examples
 
-### Plain HTTP, unlincensed (simplest setup)
+#### Plain HTTP, unlincensed (simplest setup)
 ```
-docker run -p80:80  -v /private/appdata:/appdata cmdpromptinc/pgmanage-enterprise:latest
-```
-
-### SSL Enabled, unlicensed
-```
-docker run -p443:443 -v /private/appdata:/appdata -v /private/certs:/certs -e PGMANAGE_SSL_ENABLED=True -e PGMANAGE_SSL_CERT=/certs/test.pem -e PGMANAGE_SSL_KEY=/certs/test.key cmdpromptinc/pgmanage-enterprise:latest
+docker run -p80:80  -v /private/appdata:/appdata cmdpromptinc/audax-enterprise:latest
 ```
 
-> ℹ️ this example assumes that you have valid SSL certificate and key files specified in PGMANAGE_SSL_CERT PGMANAGE_SSL_KEY variables.
+#### SSL Enabled, unlicensed
+```
+docker run -p443:443 -v /private/appdata:/appdata -v /private/certs:/certs -e AUDAX_SSL_ENABLED=True -e AUDAX_SSL_CERT=/certs/test.pem -e AUDAX_SSL_KEY=/certs/test.key cmdpromptinc/audax-enterprise:latest
+```
 
-### SSL Enabled with enterprise feautures
+> ℹ️ this example assumes that you have valid SSL certificate and key files specified in AUDAX_SSL_CERT AUDAX_SSL_KEY variables.
+
+#### SSL Enabled with enterprise feautures
 ```
-docker run -p443:443 -v /private/appdata:/appdata -v /private/certs:/certs -e PGMANAGE_SSL_ENABLED=True -e PGMANAGE_SSL_CERT=/certs/test.pem -e PGMANAGE_SSL_KEY=/certs/test.key -e PGMANAGE_LICENSE_KEY=XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX-XX cmdpromptinc/pgmanage-enterprise:latest
+docker run -p443:443 -v /private/appdata:/appdata -v /private/certs:/certs -e AUDAX_SSL_ENABLED=True -e AUDAX_SSL_CERT=/certs/test.pem -e AUDAX_SSL_KEY=/certs/test.key -e AUDAX_LICENSE_KEY=XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX-XX cmdpromptinc/audax-enterprise:latest
 ```
-> ℹ️ this example assumes that you have a valid SSL certificate and key files specified in PGMANAGE_SSL_CERT PGMANAGE_SSL_KEY variables.
+> ℹ️ this example assumes that you have a valid SSL certificate and key files specified in AUDAX_SSL_CERT AUDAX_SSL_KEY variables.
 > ℹ️ this example assumes that you have a valid license file stored in /appdata/pge-license.lic file.  
-> ℹ️ set PGMANAGE_LICENSE_KEY to the actual value provided with your PgManage Enterprise license
+> ℹ️ set AUDAX_LICENSE_KEY to the actual value provided with your Audax Enterprise license
 
-### With reverse-proxy and enterprise features
-It is possible to run PgManage behind a reverse proxy. The following example shows how to set up PgManage in a combination with Nginx
+#### With reverse-proxy and enterprise features
+It is possible to run Audax behind a reverse proxy. The following example shows how to set up Audax in a combination with Nginx
 ```
-docker pull cmdpromptinc/pgmanage-enterprise:latest
-docker run -p8080:80 -v /private/appdata:/appdata -v /private/certs:/certs -e PGMANAGE_LICENSE_KEY=XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX-XX cmdpromptinc/pgmanage-enterprise:latest
+docker pull cmdpromptinc/audax-enterprise:latest
+docker run -p8080:80 -v /private/appdata:/appdata -v /private/certs:/certs -e AUDAX_LICENSE_KEY=XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX-XX cmdpromptinc/audax-enterprise:latest
 ```
 
 Nginx configuration:
@@ -59,64 +165,64 @@ Nginx configuration:
 ```
 
 
-## Supported Environment Variables  
+### Supported Environment Variables  
 
-`PGMANAGE_LISTEN_ADDRESS`  
+`AUDAX_LISTEN_ADDRESS`  
 Default: [::]  
-The address of the nework interface that pgmanage web service will listen for the connections.  
+The address of the network interface that web service will listen for the connections.  
 
-`PGMANAGE_LISTEN_PORT`  
+`AUDAX_LISTEN_PORT`  
 Default: 80 (or 443 when SSL is enabled)  
-The TCP port that pgmanage web service will listen for the connections.
+The TCP port that web service will listen for the connections.
 
-`PGMANAGE_URL_PREFIX`  
+`AUDAX_URL_PREFIX`  
 Default: None which means that the app is seved from the root URI.
-This configuration option allows to serve pgmanage from non-root URLs like https://myhost/pgmanage/
+This configuration option allows to serve audax from non-root URLs like https://myhost/audax/
 
-`PGMANAGE_SSL_ENABLED`  
+`AUDAX_SSL_ENABLED`  
 Default: False  
-If False or unset, pgmanage webservice will run in plain HTTP mode. In production mode this option is useful in scenarios when pgmanage is served via reverse proxy which handles SSL/TLS.  
+If False or unset, the application web service will run in plain HTTP mode. In production mode this option is useful in scenarios when the application is served via reverse proxy which handles SSL/TLS.  
 
-> ⚠️ Don't run pgmanage via plain HTTP in standalone mode in production environments.
-If SSL enabled, PGMANAGE_SSL_CERT and PGMANAGE_SSL_KEY config options must also be set, pointing to the valid certificate and key files.
+> ⚠️ Don't run audax via plain HTTP in standalone mode in production environments.
+If SSL enabled, AUDAX_SSL_CERT and AUDAX_SSL_KEY config options must also be set, pointing to the valid certificate and key files.
 
-`PGMANAGE_SSL_CERT` 
+`AUDAX_SSL_CERT` 
 Default: None  
 Specifies path to SSL certificate file within the container, required if SSL is enabled.
 
-`PGMANAGE_SSL_KEY`  
+`AUDAX_SSL_KEY`  
 Default: None  
 Specifies path to corresponding SSL certificate key within the container, required if SSL is enabled.
 
-`PGMANAGE_SECURE_COOKIES` 
+`AUDAX_SECURE_COOKIES` 
 Default: False (True when SSL is enabled)  
-A boolean flag which is used to enable http cookie secure flag, should be set to True if pgmanage runs over plain HTTP with an external SSL-enabled front-end webserver.
+A boolean flag which is used to enable http cookie secure flag, should be set to True if the application runs over plain HTTP with an external SSL-enabled front-end webserver.
 
-`PGMANAGE_DEFAULT_USERNAME`  
+`AUDAX_DEFAULT_USERNAME`  
 Default: admin  
 The login name of the built-in admin user account to be created during the first startup of the application.
 
-`PGMANAGE_DEFAULT_PASSWORD`  
+`AUDAX_DEFAULT_PASSWORD`  
 Default: admin  
 The password of the built-in admin user account to be created during the first startup of the application.
 
-`PGMANAGE_OAUTH2_AUTO_CREATE_USER`  
+`AUDAX_OAUTH2_AUTO_CREATE_USER`  
 Default: True  
-Tells pgmanage to automatically create local user accounts when authenticating via OAuth2. If not enabled, any users to be authenticated via OAuth2 must be manually created locally by a pgmanage admin before they can log in through the OAuth2 provider.
+Tells audax to automatically create local user accounts when authenticating via OAuth2. If not enabled, any users to be authenticated via OAuth2 must be manually created locally by a the application admin before they can log in through the OAuth2 provider.
 
-`PGMANAGE_LICENSE_KEY`  
+`AUDAX_LICENSE_KEY`  
 Defaut: None  
 A key used to decrypt the license file. Must be present to enabled Enterprise features  
 
-`PGMANAGE_LICENSE_PATH`  
+`AUDAX_LICENSE_PATH`  
 Default: None  
-A path to a license file within the container. Optional. By default pgmanage will use **/appdata/pge-license.lic** for the license file path.
+A path to a license file within the container. Optional. By default audax will use **/appdata/audax-license.lic** for the license file path.
 
 
-## Configuration Overrides File
+### Configuration Overrides File
 For some scenarios when passing complex configuration options via environment variables may be impractical. For such cases it is possible to define te configuration in **/appdata/override.py** file. OAuth2 Provider configuration is a good example of such use case.
 
-## Setting up OAuth2 Authentication
+### Setting up OAuth2 Authentication
 First of all, the OAuth2 client must be registered on your OAuth2 provider. A valid application URL must be specified.
 Obtain OAuth2 client id and client secret from the OAuth2 Client registration page and replace the corresponding placeholders in the following configuration example.
 
