@@ -3,6 +3,9 @@
 
 ## Installation
 
+> _**Note:**_ this section describes the installation procedure for the **PgManage Community Edition**.  
+> For AMI or Docker installations, please follow the steps in the [Enterprise Edition](05_enterprise.md) section.
+
 Download the PgManage distribution file for your platform from the [Github Releases Page](https://github.com/commandprompt/pgmanage/releases).
 
 ### Linux
@@ -25,12 +28,12 @@ Run the installer and follow the instructions.
 
 ### Mac
 
-Download PgManage `.dmg` file click on it, a dialog box will appear.  
-Drag the PgManage icon to the **Applications** folder.  
+Download PgManage `.dmg` file and open it, a dialog box will appear.  
+Drag the PgManage icon to your **Applications** folder.  
 
 > _**Note:**_ to install PostgreSQL client utilities, follow the steps in the [Installing Client Utilities on Mac](#installing-client-utilities-on-mac) section.  
-> _**Note:**_ PgManage `.dmg` files are not notarized yet which may prevent them from running on latest OSX releases.  
-A workaround for that is to remove the quarantine attribute from PgManage distrubution file after downloading it by running: `xattr -d com.apple.quarantine ./pgmanage-1.3_mac_x64.dmg` command in terminal (assuming that the .dmg file reside in the current directory).
+_**Note:**_ PgManage `.dmg` files are not yet notarized, which may prevent them from running on recent macOS releases.  
+A workaround for that is to remove the quarantine attribute from PgManage distribution file after downloading it by running: ```xattr -d com.apple.quarantine ./pgmanage-$version_mac_x64.dmg``` command in terminal (assuming that the .dmg file reside in the current directory).
 
 
 ---
@@ -46,25 +49,26 @@ To test that the provided path is correct, you may click the `validate` button w
 
 ![Image of the confirmation message](./images/pgmanage-validate.png)
 
-> _**Note:**_ The autodiscovery of client binaries is not available on Windows. The only way to use the backup and restore features is to manually install the PostgreSQL client utilities and configure binary path manually.
+> _**Note:**_ Autodiscovery of client binaries is not available on Windows. To use the backup and restore features, you must manually install the PostgreSQL client utilities and configure the binary path in the settings.
 
-#### Installing Client Utilities on Windows
+
+#### Installing Client Utilities on Windows  
+
 You may download Windows PostgreSQL installer from [enterprisedb.com](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).  
 Take note of the installation path where the components will be installed, it will be used below.
 
 ![Image of the PostgreSQL installer asking for an installation path](./images/edb_windows_psql_installer1.png)  
 
-
 When prompted which components to install select `command line tools`. PgManage does not need any other components to operate.
 
 ![Image of the PostgreSQL installer asking what components to install](./images/edb_windows_psql_installer2.png)
 
-Once installation completes, set the binary path in PgManage settings. Click `Validate` to verify that Postgres binare can be found.
+Once installation completes, set the binary path in PgManage settings. Click `Validate` to verify that Postgres binaries can be found.
 
 ![Image of the settings dialog](./images/pgmanage_windows_binaries_validation.png)
 
 
-#### Installing Client Utilities on Linux:
+#### Installing Client Utilities on Linux
 
 Setting up path to PostgreSQL client binaries is usually not necessary for Linux systems because it will be automatically discovered from the $PATH environment variable. Still, there are some cases in which the path autodiscovery may fail:
 
@@ -98,15 +102,10 @@ Once your preferred PostgreSQL’s version is installed you can set the binaries
 
 ---
 
-### Oracle Support
-
-A note about extra dependencies for Oracle support.
-
----
 
 ## Launching the App
 
-When PgManage starts for the first time, it will ask you to set up a master password.  
+When PgManage starts for the first time, it will ask you to set up a master password.*  
 Fill up the provided fields and click the `Set master password` button.  
 
 ![Setting up the master password](./images/master_pass.png)  
@@ -114,7 +113,8 @@ Fill up the provided fields and click the `Set master password` button.
 The Master Password is used to encrypt the sensitive data such as database access credentials, SSH keys etc. and will be requested each time you open the application.  
 
 In case if lost, the Master Password may be reset by clicking the `Reset Master Password` button.
-> _**Note:**_ resetting the master password will erase all the information that was encrypted with it, including database connection credentials.
+> _**Note:**_ resetting the master password will erase all the information that was encrypted with it, including database connection credentials.  
+> _**Note:**_ PgManage Enterprise Edition does not rely on a Master Password for credential protection and will not prompt for one.
 
 
 👋 Welcome to PgManage
@@ -137,16 +137,16 @@ Open the Connection Management window by clicking the ⚡ icon on the sidebar:
 ![Connection Management](./images/connection_mgr.png)
 
 Connections and Connection Groups are shown on the left. Clicking on the left panel items shows the item’s view/edit form.  
-Click on `➕ Add → Connection`. Set the title and connection type; the rest of the form will change depending on the type selected. Fill in the rest of the database connection properties.
+To create a new database connection click on `➕ Add` → `Connection`. Set the title and connection type; the rest of the form will change depending on the type selected. Fill in the rest of the database connection properties.
 
-> _**Note:**_ Alternatively, the connection string may be used to establish a database connection.
+> _**Note:**_ Alternatively, the connection string may be used to establish a database connection.  
+> _**Note:**_ the password field is optional. If you leave it empty, the password prompt will be shown each time when establishing the connection.  
+> For PostgreSQL connections, PgManage will also try to retrieve the connection password from the `.pgpass` file before showing the password prompt.
 
 There are two special connection types, which behave differently from the rest:
 
 - **SQLite connections** do not need any other settings besides the Sqlite3 file path.
 - **Terminal connections** are shell/console sessions with a remote host. These connections require SSH properties to be filled-in.
-
-> **Note:** the password field is optional. If you leave it empty, the password prompt will be shown each time when establishing the connection. For PostgreSQL connections, PgManage will also try to retrieve the connection password from the `.pgpass` file before showing the password prompt.
 
 ### SSH Tunnelling
 
@@ -158,11 +158,11 @@ The connection properties can be validated before saving the connection. To do s
 
 ### Connection Groups
 
-Related connections can be grouped by clicking the `➕ Add` button and selecting the `Group` option. On the `Group` form, enter a name for the new connection group and select the connections to be grouped; click `Save`. You may also group/ungroup a particular connection from the connection edit screen by selecting the corresponding option in the `Group` dropdown.
+Related connections can be grouped by clicking the `➕ Add` button and selecting the `Group` option. In the `Group` form, enter a name for the new connection group and select the connections to be grouped; click `Save`. You may also group/ungroup a particular connection from the connection edit screen by selecting the corresponding option in the `Group` dropdown.
 
 ### Connection Cloning
 
-Connection cloning can be used to create new connection based on existing one. To clone a connection select it on the sidebar and click the `Clone` button. A new conection will be shown up, pre-populated with the properties of the original connection. Adjust connection properties, set a new unique name and click `Save`.
+Connection cloning can be used to create a new connection based on existing one. To clone a connection, select it on the sidebar and click the `Clone` button. A new conection will appear, pre-populated with the properties of the original connection. Adjust connection properties, enter a new unique name and click `Save`.
 
 ---
 
@@ -170,6 +170,6 @@ Connection cloning can be used to create new connection based on existing one. T
 
 You can access existing connections in several ways:
 
-- from the **connections menu** by clicking the ⚡ item on the left sidebar.
-- from the **connection management dialog** by clicking the connection item on the left. Then, click the `Connect` button.
+- from the **connections menu**: click the ⚡ icon on the left sidebar.
+- from the **connection management dialog**: select the connection item on the left, then click the `Connect` button.
 - from the Welcome Screen, by clicking one of the items in Recent Connections section.

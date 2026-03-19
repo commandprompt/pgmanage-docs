@@ -4,44 +4,49 @@
 
 ---
 
-## Database Tree and Context Menus
+## Database Explorer and Context Menus
 
-The tree on the left side of workspace displays the objects inside a server once a database session is established.   
+The Database Explorer tree on the left side of workspace displays the objects inside a server once a database session is established.   
 
 Most of tree items have a context menu with a list of actions available for item. The context menu can be accessed by right-clicking on the tree node.
 
 ![Tree context menu when right-clicking on an object](./images/context_menu.png)
 
-> 💡 The properties of currently selected DB object and it's SQL definition are shown in  **Properties/DDL** tabs at the bottom of DB object tree
+> 💡 The properties of currently selected DB object and it's SQL definition are shown in  **Properties/DDL** tabs at the bottom of Database Explorer
+
+The Quick Search feature of the Database Explorer in the Database Explorer allows you to quickly find the necessary item and it in the tree view. The Quick Search dialog can be shown by clicking the magnifying glass icon at the top of Database Explorer or using a hotkey (`Ctrl-P` or `Cmd-P` by default).
+
+Frequently used databases can be pinned to always be shown at the top of Database Explorer. The pin button is revealed by hovering the mouse cursor over the database node.
 
 ## Database Operation Tabs
 
-The area to the right of the Database Tree contains the operation tabs. There are multiple kinds of tabs, the most common are:
-  - Query - used to edit and execute queries against the database, view and export query results and analyze query performance.
-  - Database Console - shows a command line-like interface for the database
-  - Monitoring Dashboard - displays various performance metrics of the database server.
-  - Backends - displays a list of active database connections, allows to terminate a particular back-end.
+The area to the right of the Database Explorer contains the operation tabs. There are several types of tabs, the most common being:
+  - **Query:** used to edit and execute queries, view and export query results and analyze query performance.
+  - **Database Console:** provides a command line interface for the database
+  - **Monitoring Dashboard:** displays various performance metrics of the database server.
+  - **Backends:** displays active database connections and allows you terminate a specific database session.
 
- The tabs listed above can be opened by clicking on the `➕` sign on the tabs panel.
+ The tabs listed above can be opened by clicking on the `➕` sign on the tabs panel. Other tabs like ERD, Schema Editor, Backup, Server Configuration etc.
+ can be opened using context menus of Database Explorer.
 
 ### Query tab
 
-The top area of the tab contains the SQL editor. The toolbar in the middle allows to run most frequently used actions such as running the whole query or its selected part, formatting SQL code, import/export SQL code from files etc. The bottom part of the screen contains the query result data-grid and query plan visualizer (only available for Postgresl).
+The top area of the tab contains the SQL editor. The toolbar in the middle allows you to access frequently used actions such as running the entire query or its selected part, formatting SQL code, import/export SQL code from files etc. The bottom part of the screen displays the query result data-grid and query plan visualizer (available for PostgreSQL only).
 
 ![Query tab overview](./images/query_tab-overview.png)
 
 #### Editing the code
-The query editor suports syntax highlighting code completion, code folding and formatting for most common SQL dialects.  
+The query editor supports syntax highlighting, code completion, code folding, and formatting for most common SQL dialects.  
 
-The code completion operates in live mode by default, providing suggestions as you type. Live completion may be disabled for the current database connection by toggling the `AB` switch on top of the Database Tree. The autocomplete can also be called with a hotkey (`Ctrl-Space`  or `Cmd-Space` by default).
+The code completion operates in live mode by default, providing suggestions as you type.  You can disable live completion for the current connection by toggling the `AB` switch at the top of the Database Explorer. You can also trigger autocomplete manually using a hotkey  (`Ctrl-Space`  or `Cmd-Space` by default).
 
-The code can be auto-formatted either clicking the the **Format SQL** button or with a hotkey (`Alt-S` by default)
+To auto-format your code, click the **Format SQL** button or use the hotkey  (`Alt-S` by default)
 
 >💡 The script in the editor can be saved to a file or loaded from file using the **Save To file** and **Load From File** buttons on the toolbar.  
 >💡 SQL scripts can also be imported by draggine the file to the editor
 
 #### Running the query
-The query can be executed by clicking the `▶` (Run) button on the toolbar.
+The query can be executed by clicking the ` ▶ ` (Run) button on the toolbar.
 The `[▶︎]` (Run Selection) button allows to execute the selected part of the code in the query editor, if no code is selected the code line where the cursor is will be executed. Alternatively, the selected region of the code can be executed via context menu of the editor.
 
 Once query is executed its output will be displayed in the query results data-grid. Query results with more than 50 rows, are loaded in chunks, click `Fetch More` or `Fetch All` respectively to load the next chunk or complete query result; the number of next rows to be fetched can be selected from the drop-down list. 
@@ -49,9 +54,9 @@ Once query is executed its output will be displayed in the query results data-gr
 Query errors returned by the database will be shown as red annotations to the left of the query line which caused error. Hover the mouse pointer over annotation to reveal error details.
 
 #### Working with query results
-The contents of query results data grid can be copied to clipboard. First, select the rows, cells or a region of the grid, then right-click on the selection and choose the corresponding option of the context menu.  
+The contents of query results data grid can be copied to clipboard. First, select the rows, cells or a specific region of the grid, then right-click  the selection and choose the corresponding option from the context menu.  
 
->💡 whole rows or columns can be selected  by clickin on the row number or the column name respectively
+>💡 whole rows or columns can be selected  by clicking on the row number or the column name respectively
 
 ![Query result copy](./images/query-result-copy.png)
 
@@ -93,8 +98,8 @@ The monitoring dashboard displays various database performance metrics in form o
 
 ![Dashboard overview](./images/dashboard-overview.png)  
 
-Displayed widgets can hidden from the dashboard by clicking the `✖` icon of the corresponding widget.  
-Widgets refresh their data periodically. The refresh period of each widget can set by clicking on the current refresh period of the widget and selecting the new option from the drop-down.  
+Displayed widgets can be hidden from the dashboard by clicking the `✖` icon on the corresponding widget.  
+Widgets refresh their data periodically. You can set the refresh period for each widget by clicking its current refresh interval and selecting a new option from the dropdown menu.  
 Widget auto-refresh can be toggled by clicking the `▶/❚❚` button.
 
 Here is a list of widgets available for PostgreSQL database:
@@ -143,15 +148,18 @@ This tab displays the list of active database session processes with information
 
 ## Editing Table Data
 
-Table data can be edited in visual format using the Data Editor module. To open data editor right click on the table node in the database-tree and select `Data actions -> Edit Data` from the context menu.
+Table data can be edited in a visual format using the Data Editor module. To open data editor right click the table node in the Database Explorer and select `Edit Data` from the context menu.
 
 ![Image illustrating how to access the data editor grid](./images/edit_data_light.png)  
 
 A new data editor tab will be shown. By default, the first 10 rows of the query will be fetched with no filters applied.
+Double click a specific cell or press the `Enter` key to edit its value.  
+
+Rows, columns or cell regions can be selected using mouse (click + drag) or keyboard (Shift + arrow keys). Right click the selected regions to reveal  available operations in the context menu.
 
 ### Filtering the data
-Extra data filtering can be applied by either adding filtering criteria visually or by toggling plain SQL input and entering clause manually.
-Click on the funnel button to apply new filter and limit settings.
+Additional data filtering can be applied by either adding filtering criteria visually or by toggling plain SQL input and entering the clause manually.
+Click the funnel button to apply new filter and limit settings.
 ![Visual data filters](./images/data-filter-visual.png)  
 
 ![Manual data filters](./images/data-filter-sql.png)
@@ -162,17 +170,17 @@ Click on the funnel button to apply new filter and limit settings.
 The data editor allows the following changes:
 - **Add a row:** Click on the `➕ icon` on the top-left of table header. The new empty row will be added to the top of the grid.
 - **Delete a row:** Click on the `❌ icon` next to a row will mark it as a candidate for deletion.
-- **Edit cells:** Double-click on a data cell to enter the edit mode, make the changes, click outside the cell to exit from edit mode, hit `Esc` key to discard cell changes.
-- **Revert the Changes**: changed table rows are marked with red and orange colors for deleted and edited rows respectively. You can revert the changes by clicking the revert button to the left of the row.
+- **Edit cells:** Double click a specific cell or press the `Enter` to enter the edit mode, make the changes, click outside the cell or press `Enter` to exit from edit mode, hit `Esc` key to discard cell changes.
+- **Revert the Changes**: changed table rows are marked in red(deleted) and orange(edited) colors. You can revert any change by clicking the `↺` Revert icon to the left of the row.
 
-Once the desired changes are done, click on the `Apply changes`.
+Once the desired changes are complete, click the `Apply changes` to save the data.
 
 ---
 
 ## Creating and Edititng Tables
 Database tables can be created and edited in Schema Editor.
-To create a new table righ-click on the `Tables` node in DB tree and select `➕ Create Table` menu item.  
-To edit an existing table righ-click on it's DB tree node and select `Table Actions -> Alter table` menu item.  
+To create a new table righ-click on the `Tables` node in Database Explorer and select `➕ Create Table` menu item.  
+To edit an existing table right-click its node in Database Explorer and select `Alter table` menu item.  
 
 The schema editor tab will be shown
 ![Schema Editor Tab](./images/schema_editor_new_table.png)
@@ -217,8 +225,8 @@ The snippets can then be used in the query editor by clicking on of the items un
 ## PostgreSQL Role Management
 
 Postgres roles can be created and edited in Role Editor.
-To create a new role righ-click on the `Roles` node in DB tree and select `➕ Create Role` menu item.  
-To edit an existing role righ-click on it's DB tree node and select `Alter Role` menu item.  
+To create a new role righ-click on the `Roles` node in Database Explorer and select `➕ Create Role` menu item.  
+To edit an existing role righ-click on it's Database Explorer node and select `Alter Role` menu item.  
 
 The role editor will be shown:
 
@@ -276,7 +284,7 @@ Right-clicking on a given extension will display a menu with the following optio
 ## SQL Templates
 
 The application automatically creates a template for actions selected in the DB Entity Tree.
-For example, vacuum table template can be created by right-clicking on a table object and selecting `Table Actions → Vacuum table`. For a given table, the following text was generated in a query tab:
+For example, vacuum table template can be created by right-clicking the table node in Database Explorer and selecting `Templates → Vacuum table`. For a given table, the following text was generated in a query tab:
 
 ![Image showing the autogenerated template for an VACUUM query](./images/template1.png)
 
@@ -289,11 +297,11 @@ Then the templated code in the query editor can be adjusted as needed and execut
 
 PgManage has a convenient user interface for Postgres's [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html), [pg_dumpall](https://www.postgresql.org/docs/current/app-pg-dumpall.html), and [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) set of commands.  
 
-These features can be accessed by selectin **Backup** or **Restore** options from the DB tree context menu of Server Schema or Table nodes.  
+These features can be accessed by selecting the **Backup** or **Restore** options from the context menu of a Server, Schema, or Table node in the Database Explorer.  
 
-The backup and restore operations run as background jobs, allowing to do other tasks in PgManage without interrupting the process. Once the job completes the notification will be shown.
+Backup and restore operations run as background jobs, allowing you to perform other tasks in PgManage without interrupting the process. Once the job completes a notification will appear.
 
-The backup/restore operations are listed under the `Jobs` section. Here, information such as PID, Type, Server, Object, Start Time, Status, Duration, and Actions will be displayed.
+The backup/restore operations are listed under `Jobs` section. This section displays information such as PID, Type, Server, Object, Start Time, Status, Duration, and Actions.
 
 Under the `Actions` column, you may view details about a specific job or delete the job. The information about the job will contain the executed command, the start time, the duration of execution, and the output. The output of currently executing jobs can be viewed live by clicking its View Details icon.
 

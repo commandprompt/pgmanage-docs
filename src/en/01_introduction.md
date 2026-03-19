@@ -5,36 +5,42 @@
 PgManage is a modern Open-Source multi-platform graphical database client and administration toolkit.
 
 # Features
-* Multiple Workspaces: connect to and work with multiple databases at once
-* SQL Autocompletion: PgManage suggests completion options as you type. Schema, table, view, function and column completion are supported.
-* Secure Credential Storage: sensitive information such as DB passwords, SSH keys etc. is stored in an encrypted form and protected by Master Password.
-* Postgres Config Management: easily search and tweak your Postgres server configuration parameter using a convenient GUI.
-* Database Backups: back-up and restore your Postgres cluster or database in background while working on other stuff.
-* Visualize: PgManage Supports query plan visualization and entity relationship diagrams.
+* Multiple Workspaces: connect to and work with multiple databases simultaneously.
+* Context-aware SQL code completion: receive intelligent suggestions for tables, views, columns, aliases, and functions as you type.
+* Postgres Server Configugation Management: easily search and fine-tune Postgres server configuration parameters; take and restore configuration snapshots.
+* Database Backups: back-up and restore your Postgres cluster or database in the background without interrupting workflow.
+* Advanced Querying: write SQL with context-aware completion and visualize execution plans to gain performance insights.
+* Data Editor: search and edit database records using a familiar spreadsheet-like interface.
+* Schema Editor: design new tables or modify existing ones with ease.
+* Visual Tools: PgManage supports query execution plan visualization and Entity Relationship Diagrams (ERD).
+* Efficient Navigation: locate and jump to database objects instantly using fuzzy search without the need for manual drill-down.
 * Dark or Light: choose a theme to your taste.
+* Monitoring dashboard: track database performance with built-in real-time graphs or create your own.
 * Connection tunneling: connect to your database servers through SSH tunnels.
-* Monitoring dashboard: view various DB performance graphs in real time or create your own.
 * Built-in SSH terminal.
+* Secure Credential Storage: sensitive data, including passwords, SSH keys etc. is stored in an encrypted form and protected by Master Password.
 
 ## Supported Databases
-
-- PostgreSQL
-- SQLite
-- MySQL
-- MariaDB
-- Oracle
+* PostgreSQL
+* MySQL
+* MariaDB
+* SQLite
+* Oracle
+* Microsoft SQL Server
 
 ## Supported Platforms
 
  - Linux
  - Windows 10 and higher
- - Mac OSX
+ - macOS
  - Web *
-> **Note:** PgManage currently only supports x86_64 architecture. ARM64 support may be added in the future.
-> ***** Web access is supported by PgManage Enterprise only.  
+> **Note:** PgManage currently only supports x86_64 architecture; ARM64 support may be added in the future.  
+> *Web access is supported by PgManage Enterprise only.  
 
 ## Credits
-
-- We proudly leverage all of the great work done by the original (now dormant) project [OmniDB](https://github.com/OmniDB/OmniDB)
-- Postgres query plan visualization is powered by [Dalibo Postgres Explain Visualizer 2](https://github.com/dalibo/pev2)
-- Though now dormant, the [OmniDB](https://github.com/OmniDB/OmniDB) project provided important underlying work for the expansions done on PgManage. OmniDB was a lightweight, browser-based application that supported PostgreSQL, Oracle, MySQL, and SQLite. PgManage continues OmniDB’s legacy by providing a simple, unified interface to manage DBMS.
+PgManage is being developed by [CommandPrompt Inc](https://www.commandprompt.com/).  
+We proudly leverage all of the great work done by the original (now dormant) project [OmniDB](https://github.com/OmniDB/OmniDB).  
+Postgres query plan visualization is powered by [Pev2](https://github.com/dalibo/pev2).  
+SQL query generation is powered by [Knex.js](https://knexjs.org).  
+SQL code completion is powered by [ANTLR](https://www.antlr.org/).  
+Data tables handled by an awesome [Tabulator.js](https://tabulator.info/) library. 
