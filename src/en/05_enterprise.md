@@ -105,6 +105,7 @@ logging into web ui
     change admin password  
     adding new users  
 
+---
 
 ## Docker
 
@@ -224,17 +225,14 @@ In some scenarios, passing complex configuration options via environment variabl
 
 ---
 
-# Setting up OAuth2 Authentication
-## Registering your application.
-
-To enable OAuth2, you must first register your application with your chosen provider. During registration, you will obtain a Client ID and Client Secret, which are required for the final configuration.
-
+## Setting up OAuth2 Authentication
 To enable OAuth2, you must first register your application with your chosen provider. During registration, you will obtain a Client ID and Client Secret, which are required for the final configuration.
 
 Please refer to the specific guides of your OAuth2 provide for details instructions on how to do that:  
 
 ### Google
-#### Create a Google OAuth Client:
+
+Create a Google OAuth Client  
 Go to <https://console.developers.google.com/apis/credentials>  
 
 Select an existing project or create a new one.  
