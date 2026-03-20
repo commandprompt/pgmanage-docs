@@ -220,13 +220,56 @@ A path to a license file within the container. Optional. By default audax will u
 
 
 ### Configuration Overrides File
-For some scenarios when passing complex configuration options via environment variables may be impractical. For such cases it is possible to define te configuration in **/appdata/override.py** file. OAuth2 Provider configuration is a good example of such use case.
+In some scenarios, passing complex configuration options via environment variables may be impractical. For such cases it is possible to define the configuration in a configuration file (**/appdata/override.py** for Docker deployments) file. OAuth2 Provider configuration is a good example of such a use case.
 
-### Setting up OAuth2 Authentication
-First of all, the OAuth2 client must be registered on your OAuth2 provider. A valid application URL must be specified.
-Obtain OAuth2 client id and client secret from the OAuth2 Client registration page and replace the corresponding placeholders in the following configuration example.
+---
 
-Here is a sample configuration using Google OAuth2 provider (contents of  **/appdata/override.py**):
+# Setting up OAuth2 Authentication
+## Registering your application.
+
+To enable OAuth2, you must first register your application with your chosen provider. During registration, you will obtain a Client ID and Client Secret, which are required for the final configuration.
+
+To enable OAuth2, you must first register your application with your chosen provider. During registration, you will obtain a Client ID and Client Secret, which are required for the final configuration.
+
+Please refer to the specific guides of your OAuth2 provide for details instructions on how to do that:  
+
+### Google
+#### Create a Google OAuth Client:
+Go to <https://console.developers.google.com/apis/credentials>  
+
+Select an existing project or create a new one.  
+- Configure OAuth consent screen with External User Type.  
+- Fill out the requested information use your Audax instance for the URL.  
+- Customize other consent screen options if necessary.  
+    
+In Creadential section Click `+ Create Credentials`, then click `OAuth Client ID` in the dropdown menu  
+
+Fill in the form as follows:  
+-  Application Type: Web application  
+-  Name: Audax  
+-  Authorized JavaScript origins: https://`<AUDAX_URL>`  
+-  Authorized redirect URIs: https://`<AUDAX_URL>`/login/google  
+-  Replace `<AUDAX_URL>` with the URL of your Audax instance.  
+
+Click `Create`
+Copy the Client ID and Client Secret from the **OAuth Client** modal.
+
+Detailed guide: <https://developers.google.com/identity/protocols/oauth2>  
+
+### GitHub
+
+Register a GitHub OAuth App  
+-  Log in to your GitHub account.  
+-  Go to Profile -> Settings -> Developer settings, select OAuth Apps.  
+-  Click `New OAuth App`.  
+-  Fill out the form, use your AudaxURL when appropriate.  
+-  For the `Authorization callback` URL field use the following: https://`<AUDAX_URL>`/login/github  
+-  Copy your Client ID.
+-  Generate and copy, your Client Secret.
+
+Detailed guide: <https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps>  
+
+Here is a sample configuration using Google OAuth2 provider:
 ```
 OAUTH2_CONFIG = [
     {
@@ -261,9 +304,9 @@ OAUTH2_CONFIG = [
 ]
 ```
 
-Once PgManage container is restarted with the new configuration, its login screen should display the Oauth2 button.
+Once Audax is restarted with the new configuration, its login screen should display the OAuth2 button.
 
-> ℹ️ It is possible to configure multiple OAuth2 providers for a single PgManage instance, just define multiple configuration entries like so
+> ℹ️ It is possible to configure multiple OAuth2 providers for a single Audax instance; just define multiple configuration entries like so
 ```
 OAUTH2_CONFIG = [
     {
