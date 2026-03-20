@@ -53,9 +53,9 @@ exclude_patterns = []
 html_theme = 'sphinx_wagtail_theme'
 
 html_theme_options = dict(
-    project_name = "The Aufax Handbook",
+    project_name = "The Audax Handbook",
     logo = "logo_gears_flat.svg",
-    logo_alt = "PgManage",
+    logo_alt = "Audax",
     logo_height = 59,
     logo_url = "/",
     logo_width = 45,
