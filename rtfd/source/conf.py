@@ -54,7 +54,7 @@ html_theme = 'sphinx_wagtail_theme'
 
 html_theme_options = dict(
     project_name = "The Audax Handbook",
-    logo = "logo_gears_flat.svg",
+    logo = "logo_audax_flat.svg",
     logo_alt = "Audax",
     logo_height = 59,
     logo_url = "/",
