@@ -9,14 +9,14 @@ We currently utilize two channels for community support:
 
 ## Reporting Bugs & Contributing Patches
 
-Please create an issue or pull request at PgManage's [official repository](https://github.com/commandprompt/pgmanage/issues).
+Please create an issue or pull request in the [official repository](https://github.com/commandprompt/pgmanage/issues).
 
 ## License
 
-PgManage is distributed under the MIT License.
+Audax is distributed under the MIT License.
 
 ## Technologies Used + Credits to Authors.
-PgManage is being developed by [CommandPrompt Inc](https://www.commandprompt.com/).
+Audax is being developed by [CommandPrompt Inc](https://www.commandprompt.com/).
 We proudly leverage all of the great work done by the original (now dormant) project [OmniDB](https://github.com/OmniDB/OmniDB).  
 PgManage is built with Django and [Vuejs](https://vuejs.org/).  
 Postgres query plan visualization is powered by [Pev2](https://github.com/dalibo/pev2)  
