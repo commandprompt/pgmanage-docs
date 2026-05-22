@@ -2,7 +2,7 @@
 
 ## Amazon AMI
 ### Subscribing to the product
-Navigate to the Audax AWS Marketplace page <https://aws.amazon.com/marketplace/pp/prodview-pabbu7itax4ne>  
+Navigate to the Audax AWS Marketplace page <https://aws.amazon.com/marketplace/pp/prodview-rrd472rooejz2>  
 
 Click `View Purchase Options`, to proceed to the subscription page.
 ![AWS product listing page](./images/01_aws_marketplace_listing.png)  
