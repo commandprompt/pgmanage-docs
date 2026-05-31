@@ -11,5 +11,5 @@ PgManage stores data in the following files:
 Depending on the operating system PgManage is running on, these files can be found under the following paths:
 
 - **Linux:** ~/.pgmanage/pgmanage-app
-- **Mac OSX:** ~/.pgmanage/pgmanage-app
+- **macOS:** ~/.pgmanage/pgmanage-app
 - **Windows:** %USERPROFILE%\\.pgmanage
