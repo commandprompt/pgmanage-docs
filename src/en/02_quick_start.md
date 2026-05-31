@@ -11,7 +11,7 @@ Download the PgManage distribution file for your platform from the [Github Relea
 ### Linux
 
 PgManage for Linux is packaged in `.AppImage` format and does not require installation. \
-To start using the app just download the `.AppImage` file, make it executable and run it:
+To start using the app, just download the `.AppImage` file, make it executable and run it:
 
 ```
 chmod +x ./pgmanage-$version.AppImage
@@ -33,7 +33,7 @@ Drag the PgManage icon to your **Applications** folder.
 
 > _**Note:**_ to install PostgreSQL client utilities, follow the steps in the [Installing Client Utilities on Mac](#installing-client-utilities-on-mac) section.  
 _**Note:**_ PgManage `.dmg` files are not yet notarized, which may prevent them from running on recent macOS releases.  
-A workaround for that is to remove the quarantine attribute from PgManage distribution file after downloading it by running: ```xattr -d com.apple.quarantine ./pgmanage-$version_mac_x64.dmg``` command in terminal (assuming that the .dmg file reside in the current directory).
+A workaround for that is to remove the quarantine attribute from PgManage distribution file after downloading it by running: ```xattr -d com.apple.quarantine ./pgmanage-$version_mac_x64.dmg``` command in terminal (assuming that the .dmg file resides in the current directory).
 
 
 ---
