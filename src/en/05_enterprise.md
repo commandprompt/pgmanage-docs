@@ -177,7 +177,7 @@ Default: 80 (or 443 when SSL is enabled)
 The TCP port that web service will listen for the connections.
 
 `AUDAX_URL_PREFIX`  
-Default: None which means that the app is seved from the root URI.
+Default: None, which means that the app is served from the root URI.
 This configuration option allows to serve audax from non-root URLs like https://myhost/audax/
 
 `AUDAX_SSL_ENABLED`  
@@ -185,7 +185,7 @@ Default: False
 If False or unset, the application web service will run in plain HTTP mode. In production mode this option is useful in scenarios when the application is served via reverse proxy which handles SSL/TLS.  
 
 > ⚠️ Don't run audax via plain HTTP in standalone mode in production environments.
-If SSL enabled, AUDAX_SSL_CERT and AUDAX_SSL_KEY config options must also be set, pointing to the valid certificate and key files.
+If SSL is enabled, the AUDAX_SSL_CERT and AUDAX_SSL_KEY config options must also be set, pointing to the valid certificate and key files.
 
 `AUDAX_SSL_CERT` 
 Default: None  
@@ -209,11 +209,11 @@ The password of the built-in admin user account to be created during the first s
 
 `AUDAX_OAUTH2_AUTO_CREATE_USER`  
 Default: True  
-Tells audax to automatically create local user accounts when authenticating via OAuth2. If not enabled, any users to be authenticated via OAuth2 must be manually created locally by a the application admin before they can log in through the OAuth2 provider.
+Tells audax to automatically create local user accounts when authenticating via OAuth2. If not enabled, any users to be authenticated via OAuth2 must be manually created locally by the application admin before they can log in through the OAuth2 provider.
 
 `AUDAX_LICENSE_KEY`  
-Defaut: None  
-A key used to decrypt the license file. Must be present to enabled Enterprise features  
+Default: None  
+A key used to decrypt the license file. Must be present to enable Enterprise features  
 
 `AUDAX_LICENSE_PATH`  
 Default: None  
@@ -228,7 +228,7 @@ In some scenarios, passing complex configuration options via environment variabl
 ## Setting up OAuth2 Authentication
 To enable OAuth2, you must first register your application with your chosen provider. During registration, you will obtain a Client ID and Client Secret, which are required for the final configuration.
 
-Please refer to the specific guides of your OAuth2 provide for details instructions on how to do that:  
+Please refer to the specific guides of your OAuth2 provider for detailed instructions on how to do that:  
 
 ### Google
 
@@ -240,7 +240,7 @@ Select an existing project or create a new one.
 - Fill out the requested information use your Audax instance for the URL.  
 - Customize other consent screen options if necessary.  
     
-In Creadential section Click `+ Create Credentials`, then click `OAuth Client ID` in the dropdown menu  
+In the Credentials section, click `+ Create Credentials`, then click `OAuth Client ID` in the dropdown menu  
 
 Fill in the form as follows:  
 -  Application Type: Web application  
