@@ -15,12 +15,12 @@ Please create an issue or pull request in the [official repository](https://gith
 
 Audax is distributed under the MIT License.
 
-## Technologies Used + Credits to Authors.
+## Technologies Used and Credits to Authors
 Audax is being developed by [CommandPrompt Inc](https://www.commandprompt.com/).
 We proudly leverage all of the great work done by the original (now dormant) project [OmniDB](https://github.com/OmniDB/OmniDB).  
-PgManage is built with Django and [Vuejs](https://vuejs.org/).  
+PgManage is built with Django and [Vue.js](https://vuejs.org/).  
 Postgres query plan visualization is powered by [Pev2](https://github.com/dalibo/pev2)  
 SQL Query generation in Schema editor is powered by [Knex.js](https://knexjs.org)  
 Entity Relationship diagrams are rendered with [Cytoscape.js](https://js.cytoscape.org/)  
-Data tables handled by an awesome [Tabulator.js](https://tabulator.info/) library  
+Data tables are handled by the awesome [Tabulator.js](https://tabulator.info/) library  
 Code completion is powered by [ANTLR](https://www.antlr.org/)  
