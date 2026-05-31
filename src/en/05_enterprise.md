@@ -26,14 +26,14 @@ Set EC2 instance type (t2.medium or larger is recommended).
 Select or import the SSH keypair that will be used to access Audax instance.
 ![EC2 Instance size](./images/05_aws_launch_type_keypair.png)
 
-Configure Security Group to allow inbound TCP cunnection to ports 22 (SSH), 80 (HTTP), 443 (HTTPS).  
+Configure Security Group to allow inbound TCP connections to ports 22 (SSH), 80 (HTTP), and 443 (HTTPS).  
 The default security groups configuration already has the necessary rules.  
 **Important:** If you are planning to access Audax Web interface from the internet, ensure that you've selected subnet with public IP addresses
 ![EC2 Network and Security Group](./images/06_aws_launch_network.png)
 
 Audax uses a dedicated EBS volume for storing database backups, application logs and other application data.  
 **Size the data volume to meet your backup size demands. The recommended size is 30Gb or more.**  
-Once all the neccessary parameters were set launch the instance, wait for it to start. 
+Once all the necessary parameters are set, launch the instance and wait for it to start. 
 
 ![EC2 Storage](./images/07_aws_launch_storage.png)
 
@@ -51,7 +51,7 @@ Login to the Audax instance using the SSH keypair selected in the previous step:
 ssh ubuntu@instance-public-ip
 ...
 ==========================  
-Welcome to Audax Enteprise  
+Welcome to Audax Enterprise  
 ==========================  
 INSTANCE ID                 i-08e1e7597b40f79e4
 PUBLIC IP                   <instance-public-ip>
@@ -124,7 +124,7 @@ Files in /private/appdata and /private/certs should be accessible by the web ser
 
 ### Launch examples
 
-#### Plain HTTP, unlincensed (simplest setup)
+#### Plain HTTP, unlicensed (simplest setup)
 ```
 docker run -p80:80  -v /private/appdata:/appdata cmdpromptinc/audax-enterprise:latest
 ```
@@ -136,7 +136,7 @@ docker run -p443:443 -v /private/appdata:/appdata -v /private/certs:/certs -e AU
 
 > ℹ️ this example assumes that you have valid SSL certificate and key files specified in AUDAX_SSL_CERT AUDAX_SSL_KEY variables.
 
-#### SSL Enabled with enterprise feautures
+#### SSL Enabled with enterprise features
 ```
 docker run -p443:443 -v /private/appdata:/appdata -v /private/certs:/certs -e AUDAX_SSL_ENABLED=True -e AUDAX_SSL_CERT=/certs/test.pem -e AUDAX_SSL_KEY=/certs/test.key -e AUDAX_LICENSE_KEY=XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX-XX cmdpromptinc/audax-enterprise:latest
 ```
