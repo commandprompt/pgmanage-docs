@@ -1,7 +1,7 @@
 The Audax Handbook
 =====================
 .. attention::
-   **Rebranding in Progress:** **PgManage** is being rebranded as **Audax**. 
+   **Rebranding in Progress:** **PgManage** is being rebranded as **Audax Data Manager**. 
    During this transition, you may see both names used interchangeably throughout the 
    documentation and application.
 

@@ -2,7 +2,7 @@
 
 > [!NOTE] 
 > This section describes the installation procedure for the **Community Edition** of Audax Data Manager.  
-> For the AMI or Docker installations, please follow the steps in the [Enterprise Edition](05_enterprise.md) section.
+> For the AMI or Docker installations, please follow the steps in the [Enterprise Edition](05_enterprise.html) section.
 
 ---
 
@@ -19,13 +19,13 @@ To start using it, just download the `.AppImage` file, make it executable and ru
 chmod +x ./pgmanage-$version.AppImage
 ./pgmanage-$version.AppImage
 ```
-
+Install PostgreSQL client utilities, see [Installing Client Utilities on Linux](#id1) for the instructions.  
 
 ### Windows
 
 Download the application installer executable  
 Run the installer and follow the instructions.  
-PostgreSQL client utilities, see [Installing Client Utilities on Windows](#installing-client-utilities-on-windows) for the instructions.  
+Install PostgreSQL client utilities, see [Installing Client Utilities on Windows](#id2) for the instructions.  
   
 
 ### Mac
@@ -33,7 +33,7 @@ PostgreSQL client utilities, see [Installing Client Utilities on Windows](#insta
 Download Audax `.dmg` file and open it, a dialog box will appear.  
 Drag the Audax icon to your **Applications** folder.  
 
-PostgreSQL client utilities, see [Installing Client Utilities on Mac](#installing-client-utilities-on-mac) for the instructions.  
+Install PostgreSQL client utilities, see [Installing Client Utilities on Mac](#id3) for the instructions.  
 
 > [!NOTE] 
 > Audax `.dmg` files are not yet notarized, which may prevent them from running on recent macOS releases.  
@@ -47,7 +47,6 @@ Starting from Audax 1.5, multiple client binary versions are supported.
 The application will try to discover the paths automatically by looking up **pg_dump**, **pg_restore**, **pg_dumpall**, and **psql** in directories listed in the $PATH environment variable and some other paths commonly used in various Linux distros. 
 
 **Note:** Autodiscovery of Postgres client binaries is not available on Windows. In order to use the backup and restore features, install the PostgreSQL client binaries and configure binary paths in the application settings.
-
 
 ### Linux
 
@@ -71,9 +70,6 @@ Take note of the installation path where the components will be installed, it wi
 When prompted which components to install select `command line tools`. PgManage does not need any other components to operate.
 
 ![Image of the PostgreSQL installer asking what components to install](./images/edb_windows_psql_installer2.png)
-
-TODO: update screenshot
-![Image of the settings dialog](./images/pgmanage_windows_binaries_validation.png)
 
 Once you have installed your preferred PostgreSQL client versions, [validate your setup](#validating-the-setup) as described below.
 
