@@ -9,7 +9,8 @@ The Audax Handbook
    :maxdepth: 2
    :caption: Contents:
 
-   en/01_introduction.md
+   en/00_introduction.md
+   en/01_installation.md
    en/02_quick_start.md
    en/03_user_guide.md
    en/04_technical_details.md

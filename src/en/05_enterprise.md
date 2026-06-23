@@ -97,13 +97,9 @@ You can now start using Audax at https://instance-public-dns-name
 
 ---
 
-> 💡 The setup is complete, you can now login to Audax by visiting the link printed by the setup script.
-
-configuring oauth  
-
-logging into web ui  
-    change admin password  
-    adding new users  
+💡 The setup is now complete!  
+Log in to your Audax Data Manager instance using the credentials and the URL printed by the setup script.
+Once logged in you can change your admin user initial password and create new user accounts in the Utilities Menu at the top-right of the screen.
 
 ---
 
@@ -184,7 +180,7 @@ This configuration option allows to serve audax from non-root URLs like https://
 Default: False  
 If False or unset, the application web service will run in plain HTTP mode. In production mode this option is useful in scenarios when the application is served via reverse proxy which handles SSL/TLS.  
 
-> ⚠️ Don't run audax via plain HTTP in standalone mode in production environments.
+> ⚠️ Don't run Audax via plain HTTP in standalone mode in production environments.
 If SSL is enabled, the AUDAX_SSL_CERT and AUDAX_SSL_KEY config options must also be set, pointing to the valid certificate and key files.
 
 `AUDAX_SSL_CERT` 

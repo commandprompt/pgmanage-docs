@@ -1,10 +1,10 @@
 # Introduction
 
-<video src="https://github.com/commandprompt/pgmanage-docs/raw/refs/heads/master/src/en/images/showcase.webm" width="100%" autoplay="true" loop="true"></video>
+<video src="https://raw.githubusercontent.com/commandprompt/pgmanage-docs/refs/heads/master/src/en/images/showcase.webm" width="100%" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" controls="controls"></video>
 
-PgManage is a modern, open-source, multi-platform graphical database client and administration toolkit.
+Audax Data Manager is a modern, open-source, multi-platform graphical database client and administration toolkit.
 
-# Features
+## Features
 * Multiple Workspaces: connect to and work with multiple databases simultaneously.
 * Context-aware SQL code completion: receive intelligent suggestions for tables, views, columns, aliases, and functions as you type.
 * Postgres Server Configuration Management: easily search and fine-tune Postgres server configuration parameters; take and restore configuration snapshots.
@@ -12,7 +12,7 @@ PgManage is a modern, open-source, multi-platform graphical database client and 
 * Advanced Querying: write SQL with context-aware completion and visualize execution plans to gain performance insights.
 * Data Editor: search and edit database records using a familiar spreadsheet-like interface.
 * Schema Editor: design new tables or modify existing ones with ease.
-* Visual Tools: PgManage supports query execution plan visualization and Entity Relationship Diagrams (ERD).
+* Visual Tools: Audax supports query execution plan visualization and Entity Relationship Diagrams (ERD).
 * Efficient Navigation: locate and jump to database objects instantly using fuzzy search without the need for manual drill-down.
 * Dark or Light: choose a theme to your taste.
 * Monitoring Dashboard: track database performance with built-in real-time graphs or create your own.
@@ -29,18 +29,22 @@ PgManage is a modern, open-source, multi-platform graphical database client and 
 * Microsoft SQL Server
 
 ## Supported Platforms
-
  - Linux
  - Windows 10 and higher
  - macOS
- - Web *
-> **Note:** PgManage currently only supports x86_64 architecture; ARM64 support may be added in the future.  
-> *Web access is supported by PgManage Enterprise only.  
+ - Web (Enterprise Edition only)
+
+## Supported Architectures
+x86_64 is the only architecture currently supported. ARM64 support may be added in the future.  
 
 ## Credits
-PgManage is being developed by [CommandPrompt Inc](https://www.commandprompt.com/).  
+Audax Data Manager is brought you by [CommandPrompt Inc](https://www.commandprompt.com/).  
 We proudly leverage all of the great work done by the original (now dormant) project [OmniDB](https://github.com/OmniDB/OmniDB).  
-Postgres query plan visualization is powered by [Pev2](https://github.com/dalibo/pev2).  
-SQL query generation is powered by [Knex.js](https://knexjs.org).  
-SQL code completion is powered by [ANTLR](https://www.antlr.org/).  
-Data tables are handled by the awesome [Tabulator.js](https://tabulator.info/) library.
+SQL Query Generation in the Schema editor is powered by [Knex.js](https://knexjs.org)  
+Entity Relationship Diagrams are rendered with [Cytoscape.js](https://js.cytoscape.org/)  
+Data tables are handled by the awesome [Tabulator.js](https://tabulator.info/) library  
+Audax is built with Django and [Vue.js](https://vuejs.org/).  
+Code completion is powered by [ANTLR](https://www.antlr.org/)  
+
+
+

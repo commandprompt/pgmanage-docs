@@ -1,136 +1,38 @@
 # Quick Start
 
-
-## Installation
-
-> _**Note:**_ this section describes the installation procedure for the **PgManage Community Edition**.  
-> For AMI or Docker installations, please follow the steps in the [Enterprise Edition](05_enterprise.md) section.
-
-Download the PgManage distribution file for your platform from the [Github Releases Page](https://github.com/commandprompt/pgmanage/releases).
-
-### Linux
-
-PgManage for Linux is packaged in `.AppImage` format and does not require installation. \
-To start using the app, just download the `.AppImage` file, make it executable and run it:
-
-```
-chmod +x ./pgmanage-$version.AppImage
-./pgmanage-$version.AppImage
-```
-
-
-### Windows
-
-Download PgManage installer executable  
-Run the installer and follow the instructions.  
-> _**Note:**_ to install PostgreSQL client utilities, follow the steps in the [Installing Client Utilities on Windows](#installing-client-utilities-on-windows) section.  
-  
-
-### Mac
-
-Download PgManage `.dmg` file and open it, a dialog box will appear.  
-Drag the PgManage icon to your **Applications** folder.  
-
-> _**Note:**_ to install PostgreSQL client utilities, follow the steps in the [Installing Client Utilities on Mac](#installing-client-utilities-on-mac) section.  
-_**Note:**_ PgManage `.dmg` files are not yet notarized, which may prevent them from running on recent macOS releases.  
-A workaround for that is to remove the quarantine attribute from PgManage distribution file after downloading it by running: ```xattr -d com.apple.quarantine ./pgmanage-$version_mac_x64.dmg``` command in terminal (assuming that the .dmg file resides in the current directory).
-
-
----
-
-### PostgreSQL Client
-
-When PgManage starts, it will try to automatically find PostgreSQL client executable files for the `pg_dump`, `pg_restore`, `pg_dumpall`, and `psql` commands. 
-For cases in which this auto-discovery does not work or is not desired, a path to the binaries may be specified in the application settings (**Utilities Menu → Settings**):
-
-![Image of the settings dialog](./images/pgmanage-settings.png)
-
-To test that the provided path is correct, you may click the `validate` button which will display discovered Postgres binary file versions:
-
-![Image of the confirmation message](./images/pgmanage-validate.png)
-
-> _**Note:**_ Autodiscovery of client binaries is not available on Windows. To use the backup and restore features, you must manually install the PostgreSQL client utilities and configure the binary path in the settings.
-
-
-#### Installing Client Utilities on Windows  
-
-You may download Windows PostgreSQL installer from [enterprisedb.com](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).  
-Take note of the installation path where the components will be installed, it will be used below.
-
-![Image of the PostgreSQL installer asking for an installation path](./images/edb_windows_psql_installer1.png)  
-
-When prompted which components to install select `command line tools`. PgManage does not need any other components to operate.
-
-![Image of the PostgreSQL installer asking what components to install](./images/edb_windows_psql_installer2.png)
-
-Once installation completes, set the binary path in PgManage settings. Click `Validate` to verify that Postgres binaries can be found.
-
-![Image of the settings dialog](./images/pgmanage_windows_binaries_validation.png)
-
-
-#### Installing Client Utilities on Linux
-
-Setting up path to PostgreSQL client binaries is usually not necessary for Linux systems because it will be automatically discovered from the $PATH environment variable. Still, there are some cases in which the path autodiscovery may fail:
-
-- if multiple versions of the PostgreSQL client binaries are installed  
-- if the PostgreSQL client binaries are installed in a location not included in the $PATH environment variable  
-
-Once you have installed your preferred PostgreSQL’s version, you can set the binaries path `Utilities Menu → Settings`.
-
-> _**Note:**_ You may install PostgreSQL for your particular Linux distribution on [postgresql.org linux downloads page](https://www.postgresql.org/download/linux/).
-
-#### Installing Client Utilities on Mac
-
-To install the client binaries on MacOS, there are two options: to install the complete Postgres packages or to only install libpq and then update the $PATH environment variable.
-
-Here is an example on how to install Postgres using Brew:
-
-```
-brew install postgresql@[Major version]
-```
-
-OR how to install only the client binaries and update $PATH variable to include Postgres client binaries:
-
-```
-brew install libpq
-echo 'export PATH="/usr/local/opt/libpq/bin:$PATH"' >> ~/.zshrc
-```
-
-Once your preferred PostgreSQL’s version is installed you can set the binaries path `Utilities Menu → Settings`.
-
-> **Note:** For more information on how to install Postgres on Mac, refer to the [official Postgres documentation](https://www.postgresql.org/download/macosx/).
-
----
-
-
 ## Launching the App
 
-When PgManage starts for the first time, it will ask you to set up a master password.*  
+When the app starts for the first time, it will ask you to set up a master password.*  
 Fill up the provided fields and click the `Set master password` button.  
 
 ![Setting up the master password](./images/master_pass.png)  
 
 The Master Password is used to encrypt the sensitive data such as database access credentials, SSH keys etc. and will be requested each time you open the application.  
 
-In case if lost, the Master Password may be reset by clicking the `Reset Master Password` button.
-> _**Note:**_ resetting the master password will erase all the information that was encrypted with it, including database connection credentials.  
-> _**Note:**_ PgManage Enterprise Edition does not rely on a Master Password for credential protection and will not prompt for one.
+In case if lost, the Master Password may be reset by clicking the `Reset Master Password` button.  
+
+**Note:** resetting the master password will erase all the information that was encrypted with it, including database connection credentials.  
+**Note:** Web-based installations (Audax Enterprise) do not rely on the Master Password for credential protection and will not prompt for one.  
 
 
-👋 Welcome to PgManage
+👋 Welcome to Audax Data Manager
 
 ![Welcome page with labels for the primary menu, utilities menu, and walkthroughs](./images/welcome-overview.png)
 
-To get started, you may press the `i` icon on the bottom-right corner to access Interface Walkthrough.
+The home screen shows your recently used connections, hotkey configuration and some useful links for external resources.
+You can click any of your recent connections to quicky connect to the particular database.
+The small icon near the *Hotkeys* allows to quickly access hotkey customization dialog.
+
+To get started, you may press the `i` icon on the bottom-right to launch the interface onboarding.
 
 The utilities menu at the top-right corner allows you to access the application settings, view the application version and general application info.
 
-The sidebar allows you to manage connections, switch between active database workspaces and access the code snippets panel. These features will be discussed later in this documentation.
+The sidebar allows you to manage connections, switch between active database workspaces and access the code snippets panel. It also has a quick access to theme and font settings at the bottom. These features will be discussed later in this documentation.
 
 
 ---
 
-## Creating your first database connection
+## Create your first database connection
 
 Open the Connection Management window by clicking the ⚡ icon on the sidebar:
 
@@ -139,9 +41,10 @@ Open the Connection Management window by clicking the ⚡ icon on the sidebar:
 Connections and Connection Groups are shown on the left. Clicking on the left panel items shows the item’s view/edit form.  
 To create a new database connection click on `➕ Add` → `Connection`. Set the title and connection type; the rest of the form will change depending on the type selected. Fill in the rest of the database connection properties.
 
-> _**Note:**_ Alternatively, the connection string may be used to establish a database connection.  
-> _**Note:**_ the password field is optional. If you leave it empty, the password prompt will be shown each time when establishing the connection.  
-> For PostgreSQL connections, PgManage will also try to retrieve the connection password from the `.pgpass` file before showing the password prompt.
+Alternatively, the connection string may be used to establish a database connection.  
+The password field is optional. If you leave it empty, the password prompt will be shown each time when establishing the connection.  
+
+💡 For PostgreSQL connections, PgManage will also try to retrieve the connection password from the **.pgpass** file before showing the password prompt.
 
 There are two special connection types, which behave differently from the rest:
 
@@ -158,7 +61,7 @@ The connection properties can be validated before saving the connection. To do s
 
 ### Connection Groups
 
-Related connections can be grouped by clicking the `➕ Add` button and selecting the `Group` option. In the `Group` form, enter a name for the new connection group and select the connections to be grouped; click `Save`. You may also group/ungroup a particular connection from the connection edit screen by selecting the corresponding option in the `Group` dropdown.
+Related connections can be grouped by clicking the `➕ Add` button and selecting the `Group` option. In the Group form, enter a name for the new connection group and select the connections to be grouped; click `Save`. You may also group/ungroup a particular connection from the connection edit form by selecting the corresponding option in the Group dropdown.
 
 ### Connection Cloning
 
@@ -166,10 +69,10 @@ Connection cloning can be used to create a new connection based on existing one.
 
 ---
 
-## Connecting to the Database
+## Connect to the Database
 
 You can access existing connections in several ways:
 
-- from the **connections menu**: click the ⚡ icon on the left sidebar.
+- from the **connections menu**: click the `⚡` icon on the left sidebar.
 - from the **connection management dialog**: select the connection item on the left, then click the `Connect` button.
-- from the Welcome Screen, by clicking one of the items in Recent Connections section.
+- from the Welcome Screen, by clicking one of the items in **Recent Connections** section.
