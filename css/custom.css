@@ -115,24 +115,37 @@
     outline-offset: 1px;
     box-shadow: none;
   }
-  
-  img {
-    border-radius: 5px;
+ 
+  .admonition {
+    background-color: #e0eff0;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: .25rem;
+    overflow: hidden;
+  }
+
+  section img, section video {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+                0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+
   }
   
   body code {
     color: #ff8c00;
     background-color: rgba(252, 138, 0, 0.1);
-    border: none;
+    border: 1px solid #ff8c0045;
     border-radius: 5px;
-    padding: 3px;
+    padding: 2px;
   }
   
   body.theme-dark code {
     color: #ff8c00;
     background-color: rgba(252, 138, 0, 0.15);
     border: 1px solid #ff8c00;
-    border-radius: 5px;
-    padding: 3px;
+    padding: 2px;
   }
-  
+ 

@@ -17,13 +17,13 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Audax'
+project = 'Audax Data Manager'
 copyright = '2023-%Y, CommandPrompt Inc.'
 author = 'The Audax Team'
 
 # The full version, including alpha/beta/rc tags
-release = '1.3'
-version = '1.3'
+release = '1.5'
+version = '1.5'
 
 # Path to the initial page
 master_doc = 'index'
@@ -34,7 +34,13 @@ master_doc = 'index'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['recommonmark', 'sphinx_wagtail_theme', 'sphinx_markdown_tables']
+extensions = ['myst_parser', 'sphinx_wagtail_theme', 'sphinx_markdown_tables']
+
+myst_enable_extensions = [
+    "alert",
+]
+
+myst_heading_anchors = 4
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -55,15 +61,15 @@ html_theme = 'sphinx_wagtail_theme'
 html_theme_options = dict(
     project_name = "The Audax Handbook",
     logo = "logo_audax_flat.svg",
-    logo_alt = "Audax",
+    logo_alt = "Audax Data Manager",
     logo_height = 59,
     logo_url = "/",
     logo_width = 45,
     github_url = "https://github.com/commandprompt/pgmanage-docs/blob/master/src/",
     footer_links = ",".join([
-        "CommandPrompt Inc.|https://commandprompt.com/",
-        "Download PgManage|https://github.com/commandprompt/pgmanage/releases",
-        "PgManage on Discord|https://discord.com/channels/710918545906597938/1077284441279443054",
+        "CommandPrompt Inc.|https://www.commandprompt.com/",
+        "Download Audax Data Manager|https://github.com/commandprompt/pgmanage/releases",
+        "Audax on Discord|https://discord.gg/bW2hsax8We",
     ]),
     # FIXME - this does not work with wagtail theme
     # html_show_sourcelink = False,
