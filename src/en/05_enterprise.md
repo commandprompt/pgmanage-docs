@@ -72,7 +72,7 @@ ubuntu@audax-host:~$ sudo /app/audax-setup
 === Audax setup ===
 App base path: '/app'
 App config path: '/appdata/config.py'
-See https://pgmanage.readthedocs.io/en/latest/en/05_enterprise.html for details.
+See https://audax.readthedocs.io/en/latest/en/05_enterprise.html for details.
 
 SSL enabled? (yes/no, y/n, true/false) [no]: y
 Use builtin certs? (yes/no, y/n, true/false) [yes]: 

@@ -72,7 +72,7 @@ Take note of the installation path where the components will be installed, it wi
 
 ![Image of the PostgreSQL installer asking for an installation path](./images/edb_windows_psql_installer1.png)  
 
-When prompted which components to install select `command line tools`. PgManage does not need any other components to operate.
+When prompted which components to install select `command line tools`. Audax does not need any other components to operate.
 
 ![Image of the PostgreSQL installer asking what components to install](./images/edb_windows_psql_installer2.png)
 

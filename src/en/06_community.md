@@ -16,7 +16,7 @@ Please create an issue or pull request in the [official repository](https://gith
 Audax Data Manager is distributed under the MIT License.
 
 ## Technologies Used and Credits to Authors
-Audax brought you by [CommandPrompt Inc](https://www.commandprompt.com/).
+Audax is brought you by [CommandPrompt Inc](https://www.commandprompt.com/).
 We proudly leverage all of the great work done by the original (now dormant) project [OmniDB](https://github.com/OmniDB/OmniDB).  
 Audax is built with Django and [Vue.js](https://vuejs.org/).  
 Postgres query plan visualization is powered by [Pev2](https://github.com/dalibo/pev2)  

@@ -44,7 +44,7 @@ To create a new database connection click on `➕ Add` → `Connection`. Set the
 Alternatively, the connection string may be used to establish a database connection.  
 The password field is optional. If you leave it empty, the password prompt will be shown each time when establishing the connection.  
 
-💡 For PostgreSQL connections, PgManage will also try to retrieve the connection password from the **.pgpass** file before showing the password prompt.
+💡 For PostgreSQL connections, Audax will also try to retrieve the connection password from the **.pgpass** file before showing the password prompt.
 
 There are two special connection types, which behave differently from the rest:
 
@@ -53,7 +53,7 @@ There are two special connection types, which behave differently from the rest:
 
 ### SSH Tunnelling
 
-In addition to direct database connections, PgManage can also connect to database servers via an SSH tunnel. This feature is useful when the database server is not directly accessible, but can be accessed via an intermediate SSH server host. To use SSH tunneling toggle the corresponding switch and enter the SSH credentials for the intermediate host.
+In addition to direct database connections, Audax Data Manager can also connect to database servers via an SSH tunnel. This feature is useful when the database server is not directly accessible, but can be accessed via an intermediate SSH server host. To use SSH tunneling toggle the corresponding switch and enter the SSH credentials for the intermediate host.
 
 ### Testing and Saving the Connection
 

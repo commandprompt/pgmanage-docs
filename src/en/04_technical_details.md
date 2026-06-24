@@ -2,7 +2,7 @@
 
 ## Application File Location
 
-PgManage stores data in the following files:
+Audax stores data in the following files:
 
 **pgmanage.db**: an SQLite3 database to store database connections, query history, and other application data.
 
