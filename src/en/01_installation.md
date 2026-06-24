@@ -17,13 +17,16 @@ To start using it, just download the `.AppImage` file, make it executable and ru
 
 ```
 chmod +x ./pgmanage-$version.AppImage
+```
+```
 ./pgmanage-$version.AppImage
 ```
 Install PostgreSQL client utilities, see [Installing Client Utilities on Linux](#id1) for the instructions.  
 
+
 ### Windows
 
-Download the application installer executable  
+Download the application installer executable.  
 Run the installer and follow the instructions.  
 Install PostgreSQL client utilities, see [Installing Client Utilities on Windows](#id2) for the instructions.  
   
@@ -37,7 +40,9 @@ Install PostgreSQL client utilities, see [Installing Client Utilities on Mac](#i
 
 > [!NOTE] 
 > Audax `.dmg` files are not yet notarized, which may prevent them from running on recent macOS releases.  
-A workaround for that is to remove the quarantine attribute from PgManage distribution file after downloading it by running: ```xattr -d com.apple.quarantine ./pgmanage-$version_mac_x64.dmg``` command in terminal (assuming that the .dmg file resides in the current directory).
+> A workaround for that is to remove the quarantine attribute from application distribution file after downloading it by running:  
+> ```xattr -d com.apple.quarantine ./pgmanage-$version_mac_x64.dmg```  
+> command in terminal (assuming that the .dmg file resides in the current directory).
 
 
 ## Install Postgres Client Binaries
@@ -50,7 +55,7 @@ The application will try to discover the paths automatically by looking up **pg_
 
 ### Linux
 
-Here is an example on how to install postgres client binaries on Debian / Ubuntu familily of linux distros:
+Here is an example on how to install postgres client binaries on Debian / Ubuntu family of linux distros:
 ```
 sudo apt update
 sudo apt install -y postgresql-client-15 postgresql-client-16 postgresql-client-17
