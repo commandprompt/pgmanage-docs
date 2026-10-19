@@ -45,61 +45,34 @@ Once new instance is running, the setup must be finalized via SSH console.
 Obtain instance public IP from the details page
 ![EC2 Instance Details](./images/08_aws_instance_details.png)
 
-Login to the Audax instance using the SSH keypair selected in the previous step: `ssh ubuntu@<instance-public-ip> `
-    
-```
-ssh ubuntu@instance-public-ip
-...
-==========================  
-Welcome to Audax Enterprise  
-==========================  
-INSTANCE ID                 i-08e1e7597b40f79e4
-PUBLIC IP                   <instance-public-ip>
-PUBLIC HOSTNAME             <instance-public-dns-name>
-APPDATA MOUNTED             OK
-CONFIG PRESENT              FAIL
-SERVICE STATUS              STOPPED
+Visit `https://<instance-public-ip>/`
+![AWS Setup Wizard Login](./images/09_aws_setupwizard_login.png)
 
-Audax config file not found at /appdata/config.py
-Run 'sudo /app/audax-setup' to generate a new configuration
-```
+Authenticate using EC2 instance id as a password
 
-After login the current instance status and information will be shown.
-Run `sudo /app/audax-setup` to generate app configuration
+![AWS Setup Wizard Main](./images/09_aws_setupwizard_main.png)  
+Initially Audax Data Manager uses built-in self-signed SSL certificates.
+To use certificates from a verified Certificate Authority, select `Custom certs` and upload certificate and key files.
 
-```
-ubuntu@audax-host:~$ sudo /app/audax-setup
-=== Audax setup ===
-App base path: '/app'
-App config path: '/appdata/config.py'
-See https://audax.readthedocs.io/en/latest/en/05_enterprise.html for details.
+![AWS Setup Wizard Oauth](./images/09_aws_setupwizard_oauth.png)  
+To use OAuth2 authentication one or more providers must be configured, tick `configure an Oauth2 provider` checkbox to reveal provider configuration form.  
+When authenticating against Google, Microsoft or Github select a corresponding provile to simplify configuration.
+Use `Custom` profile for other providers.
 
-SSL enabled? (yes/no, y/n, true/false) [no]: y
-Use builtin certs? (yes/no, y/n, true/false) [yes]: 
-Listening address (e.g. 127.0.0.1, ::1) [::]: 
-Listening port [443]: 
-Configure OAuth2 login providers? (yes/no, y/n, true/false) [no]: 
-URL path to access Audax (ex. https://instance-public-dns-name/<PATH> leave blank to serve from / ) []: 
+Refer to [OAuth2](#setting-up-oauth2-authentication) section of this page for instructions on how to register your OAuth2 applicaiton and obtain client ID, Secret and other necessary information.
 
-=== Setup complete ===
+![AWS Setup Wizard Done](./images/09_aws_setupwizard_done.png)
 
-....
+💡 The setup is now complete!  
+Audax Data Manager may take 10-20 seconds to initialize and start and will be available at the URL shown at the final screen of the Setup Wizard.
 
-An initial admin user account has been created with the following credentials
+Log in to your instance `admin` as username and your EC2 instance id as a password.
+Once logged in you can change your admin user initial password and create new user accounts in the Utilities Menu at the top-right of the screen.  
 
-Login: admin
-Password: <instance-id>
-
-IMPORTANT: Change this password after the first login
-
-You can now start using Audax at https://instance-public-dns-name
-```
 
 ---
 
-💡 The setup is now complete!  
-Log in to your Audax Data Manager instance using the credentials and the URL printed by the setup script.
-Once logged in you can change your admin user initial password and create new user accounts in the Utilities Menu at the top-right of the screen.
+
 
 ---
 
@@ -263,7 +236,8 @@ Register a GitHub OAuth App
 
 Detailed guide: <https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps>  
 
-Here is a sample configuration using Google OAuth2 provider:
+
+Here is a sample Docker configuration using Google OAuth2 provider:
 ```
 OAUTH2_CONFIG = [
     {
