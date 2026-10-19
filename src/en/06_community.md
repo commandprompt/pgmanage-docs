@@ -21,6 +21,6 @@ We proudly leverage all of the great work done by the original (now dormant) pro
 Audax is built with Django and [Vue.js](https://vuejs.org/).  
 Postgres query plan visualization is powered by [Pev2](https://github.com/dalibo/pev2)  
 SQL Query Generation in Schema editor is powered by [Knex.js](https://knexjs.org)  
-Entity Relationship Diagrams are rendered with [Cytoscape.js](https://js.cytoscape.org/)  
+Entity Relationship Diagrams are rendered with [Vue Flow](https://vueflow.dev/)  
 Data tables are handled by the awesome [Tabulator.js](https://tabulator.info/) library  
 Code completion is powered by [ANTLR](https://www.antlr.org/)  
