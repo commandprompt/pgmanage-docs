@@ -187,7 +187,8 @@ Foreign keys columns and their references are marked with the key icon.
 **Highlight Relationships:** Click a relationship line (edge) to highlight the link and its connected columns.  
 **Rearrange Tables:** Drag diagram nodes manually to rearrange the layout.  
 **Navigate the Canvas:** scroll up/down to change the zoom, click on an empty space and drag to pan. You may also use the toolbar on the top-right to zoom reset the layout or toggle fullscreen mode for the diagram.  
-
+**Export as Image:** click the camera icon on the diagram toolbar to export the diagram as PNG image.  
+**Reset Layout:** click the rever icon on the diagram toolbar to reset table positions and pan/zoom state to it defaults.  
 
 ### Layout Persistence
 The application automatically saves your customizations, including pan, zoom, and table positions. These settings are fully restored when you reopen the database workspace.
