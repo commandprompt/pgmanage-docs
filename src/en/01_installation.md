@@ -8,7 +8,7 @@
 
 ## Download and install the app
 
-Download the application distribution file for your platform from the [Github Releases Page](https://github.com/commandprompt/pgmanage/releases).
+Download the application distribution file for your platform from the [Github Releases Page](https://github.com/commandprompt/audax-data-manager/releases).
 
 ### Linux
 
@@ -16,10 +16,10 @@ The Linux version of the app is packaged in `.AppImage` format and does not requ
 To start using it, just download the `.AppImage` file, make it executable and run it:
 
 ```
-chmod +x ./pgmanage-$version.AppImage
+chmod +x ./audaxdm-$version.AppImage
 ```
 ```
-./pgmanage-$version.AppImage
+./audaxdm-$version.AppImage
 ```
 Install PostgreSQL client utilities, see [Installing Client Utilities on Linux](#id1) for the instructions.  
 
@@ -41,7 +41,7 @@ Install PostgreSQL client utilities, see [Installing Client Utilities on Mac](#i
 > [!NOTE] 
 > Audax `.dmg` files are not yet notarized, which may prevent them from running on recent macOS releases.  
 > A workaround for that is to remove the quarantine attribute from application distribution file after downloading it by running:  
-> ```xattr -d com.apple.quarantine ./pgmanage-$version_mac_x64.dmg```  
+> ```xattr -d com.apple.quarantine ./audaxdm-$version_mac_x64.dmg```
 > command in terminal (assuming that the .dmg file resides in the current directory).
 
 
